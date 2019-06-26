@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: 6921163f4d6dc9f42b8166ec5c464423
+guid: fd34ec6a2f26e0b41af59b452afd8ddf
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: fuse
-    100002: //RootNode
-    100004: ground_plane
-    400000: fuse
-    400002: //RootNode
-    400004: ground_plane
-    2100000: unnamed
-    2100002: glass
-    2100004: metal_look
-    2100006: copper
-    2300000: fuse
-    2300002: ground_plane
-    3300000: fuse
-    3300002: ground_plane
-    4300000: ground_plane
-    4300002: fuse
+    100000: //RootNode
+    400000: //RootNode
+    2100000: paper
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plane
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
