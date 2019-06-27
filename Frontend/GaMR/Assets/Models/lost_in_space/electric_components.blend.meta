@@ -39,6 +39,7 @@ ModelImporter:
     100066: tcurve_003
     100068: tcurve_004
     100070: tcurve_005
+    100072: breadboard
     400000: BezierCurve_000
     400002: BezierCurve_001
     400004: BezierCurve_002
@@ -75,6 +76,7 @@ ModelImporter:
     400066: tcurve_003
     400068: tcurve_004
     400070: tcurve_005
+    400072: breadboard
     2100000: cable_material
     2100002: underground
     2100004: unnamed
@@ -115,6 +117,7 @@ ModelImporter:
     2300064: tcurve_003
     2300066: tcurve_004
     2300068: tcurve_005
+    2300070: breadboard
     3300000: BezierCurve_000
     3300002: BezierCurve_001
     3300004: BezierCurve_002
@@ -150,6 +153,7 @@ ModelImporter:
     3300064: tcurve_003
     3300066: tcurve_004
     3300068: tcurve_005
+    3300070: breadboard
     4300000: BezierCurve_003
     4300002: BezierCurve_002
     4300004: BezierCurve_000
@@ -185,6 +189,7 @@ ModelImporter:
     4300064: cross
     4300066: tcurve
     4300068: corner
+    4300070: breadboard
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
