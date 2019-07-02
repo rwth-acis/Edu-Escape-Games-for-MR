@@ -1,53 +1,28 @@
 fileFormatVersion: 2
-guid: df43856fafbee29488f1353485c31c8f
+guid: ec3f4bcee0bab9f48a5cdf41710ef3a1
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cube
-    100002: Cylinder_001
-    100004: //RootNode
-    100006: Plane
-    100008: fuse
-    100010: fuse_box
-    100012: ground_plane
-    100014: Text
-    400000: Cube
-    400002: Cylinder_001
-    400004: //RootNode
-    400006: Plane
-    400008: fuse
-    400010: fuse_box
-    400012: ground_plane
-    400014: Text
-    2100000: glass
-    2100002: metal_look
-    2100004: copper
-    2100006: almost_black
-    2100008: unnamed
-    2100010: white_af
-    2300000: Cube
-    2300002: Cylinder_001
-    2300004: Plane
-    2300006: fuse
-    2300008: fuse_box
-    2300010: ground_plane
-    2300012: Text
-    3300000: Cube
-    3300002: Cylinder_001
-    3300004: Plane
-    3300006: fuse
-    3300008: fuse_box
-    3300010: ground_plane
-    3300012: Text
-    4300000: Cylinder_001
-    4300002: Cube
-    4300004: Plane
-    4300006: fuse
-    4300008: fuse_box
-    4300010: ground_plane
-    4300012: Text
+    100000: BezierCurve
+    100002: Bone
+    100004: cap
+    100006: fuse
+    100008: //RootNode
+    400000: BezierCurve
+    400002: Bone
+    400004: cap
+    400006: fuse
+    400008: //RootNode
+    2100000: box
+    2100002: glass_001
+    2100004: metal_look_001
+    2300000: fuse
+    3300000: fuse
+    4300000: BezierCurve
+    4300002: fuse
     7400000: Default Take
     9500000: //RootNode
+    13700000: BezierCurve
   externalObjects: {}
   materials:
     importMaterials: 1
