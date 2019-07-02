@@ -581,7 +581,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 0030e89f6e7bd401
+  metroCertificateNotAfter: 80787f1fb94fd601
   metroApplicationDescription: GaMR
   wsaImages:
     2031664: Assets/Textures/Logo/Logo_48px.png
