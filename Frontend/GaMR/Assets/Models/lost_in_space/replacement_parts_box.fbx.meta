@@ -1,46 +1,26 @@
 fileFormatVersion: 2
-guid: ec3f4bcee0bab9f48a5cdf41710ef3a1
+guid: 87d75dcbcd9136e429b16a57d0e4eefb
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: BezierCurve
-    100002: Bone
-    100004: cap
-    100006: fuse
-    100008: //RootNode
-    100010: cap_bone
-    100012: replacement_part_box
-    100014: Bone_001
-    100016: Armature
-    400000: BezierCurve
-    400002: Bone
-    400004: cap
-    400006: fuse
-    400008: //RootNode
-    400010: cap_bone
-    400012: replacement_part_box
-    400014: Bone_001
-    400016: Armature
-    2100000: box
-    2100002: glass_001
-    2100004: metal_look_001
-    2100006: unnamed
-    2100008: box_material
-    2300000: fuse
-    2300002: BezierCurve
-    2300004: //RootNode
-    3300000: fuse
-    3300002: BezierCurve
-    3300004: //RootNode
+    100000: Armature
+    100002: BezierCurve
+    100004: Bone
+    100006: Bone.001
+    100008: Bone.001_end
+    100010: //RootNode
+    400000: Armature
+    400002: BezierCurve
+    400004: Bone
+    400006: Bone.001
+    400008: Bone.001_end
+    400010: //RootNode
+    2100000: No Name
     4300000: BezierCurve
-    4300002: fuse
-    4300004: replacement_part_box
-    7400000: Default Take
-    7400002: close_box
-    7400004: open_box
+    7400000: close_animation
+    7400002: open_animation
     9500000: //RootNode
     13700000: BezierCurve
-    13700002: replacement_part_box
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -69,10 +49,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
+      name: close_animation
+      takeName: Armature|close_animation
       firstFrame: 0
-      lastFrame: 249
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -97,10 +77,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: open_box
-      takeName: open_box
-      firstFrame: -1
-      lastFrame: 19
+      name: open_animation
+      takeName: Armature|open_animation
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
