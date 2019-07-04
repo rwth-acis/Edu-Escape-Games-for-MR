@@ -5,4 +5,6 @@
 
 ![alt text](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/lost_in_space/sample_renders/board_computer.png "Board Computer")
 
+![alt text](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/lost_in_space/sample_renders/breadboard_solution_construction2.PNG "Electric circuit solution")
+
 You can find more sample renders for the _Lost in Space_ scenario [here](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/lost_in_space/sample_renders).
