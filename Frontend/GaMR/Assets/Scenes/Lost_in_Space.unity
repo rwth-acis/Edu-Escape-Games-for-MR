@@ -1535,7 +1535,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.28
+      value: -7.694
       objectReference: {fileID: 0}
     - target: {fileID: 2300006, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2626,7 +2626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_Name
-      value: replacement_parts_box (1)
+      value: replacement_parts_box
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3827,5 +3827,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0332103, y: 0.79657316, z: 4.0287566}
-  m_Center: {x: 0.004065752, y: 0.3798492, z: -0.0032026768}
+  m_Size: {x: 2.03321, y: 1.187341, z: 4.0287566}
+  m_Center: {x: 0.004065752, y: 0.575233, z: -0.0032026768}
