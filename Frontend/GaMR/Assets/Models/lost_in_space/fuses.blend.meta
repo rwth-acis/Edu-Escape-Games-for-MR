@@ -15,8 +15,10 @@ ModelImporter:
     2100006: copper
     2300000: fuse
     2300002: ground_plane
+    2300004: //RootNode
     3300000: fuse
     3300002: ground_plane
+    3300004: //RootNode
     4300000: ground_plane
     4300002: fuse
     7400000: Default Take
