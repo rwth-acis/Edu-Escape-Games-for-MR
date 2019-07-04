@@ -12,6 +12,8 @@ ModelImporter:
     100012: replacement_part_box
     100014: Bone_001
     100016: Armature
+    100018: fuse_001
+    100020: fuse_002
     400000: BezierCurve
     400002: Bone
     400004: cap
@@ -21,6 +23,8 @@ ModelImporter:
     400012: replacement_part_box
     400014: Bone_001
     400016: Armature
+    400018: fuse_001
+    400020: fuse_002
     2100000: box
     2100002: glass_001
     2100004: metal_look_001
@@ -32,12 +36,18 @@ ModelImporter:
     2300000: fuse
     2300002: BezierCurve
     2300004: //RootNode
+    2300006: fuse_001
+    2300008: fuse_002
     3300000: fuse
     3300002: BezierCurve
     3300004: //RootNode
+    3300006: fuse_001
+    3300008: fuse_002
     4300000: BezierCurve
     4300002: fuse
     4300004: replacement_part_box
+    4300006: fuse_002
+    4300008: fuse_001
     7400000: Default Take
     7400002: close_box
     7400004: open_box

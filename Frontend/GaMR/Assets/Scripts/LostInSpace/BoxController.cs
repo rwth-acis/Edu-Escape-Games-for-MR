@@ -3,59 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 
-public class BoxController : MonoBehaviour, IFocusable, IInputClickHandler {
 
-    private Renderer render;
-    private Shader standard;
-    private Shader focused;
+/**
+ * Should only be apply to the replacement part box. Handles the open/close
+ * animations of the box.
+ */
+public class BoxController : MonoBehaviour, IInputClickHandler {
+    
     private bool isOpened;
-
-    private Animation anim;
-
-    // Use this for initialization
+    private Animator anim;
+    
+    /**
+     * On start get the animator and set the box opening configuration to closed (false)
+     */
     void Awake () {
-        render = GetComponentInChildren<Renderer>();
-        standard = Shader.Find("Standard");
-        focused = Shader.Find("Diffuse");
+        anim = gameObject.GetComponent<Animator>();
+        isOpened = false;
+    }
 
-        anim = gameObject.GetComponent<Animation>();
-        if (anim != null)
-        {
-            anim["close_animation"].wrapMode = WrapMode.Once;
-            anim.Play("close_animation");
+    /**
+     * Change the state evertime the box is clicked. Use crossfade for 
+     * a smooth transition if the box is clicked fast.
+     */
+    public void OnInputClicked(InputClickedEventData eventData) {
+        if (isOpened) { // If it's open close it
+            anim.CrossFade("CloseBox", 0.5f);
             isOpened = false;
-        } else
-        {
-            Debug.Log("Animator is null!");
-        }
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void OnFocusEnter()
-    {
-        render.material.shader = focused;
-    }
-
-    public void OnFocusExit()
-    {
-        render.material.shader = standard;
-    }
-
-    public void OnInputClicked(InputClickedEventData eventData)
-    {
-        if (isOpened)
-        {
-            anim["close_animation"].wrapMode = WrapMode.Once;
-            anim.Play("close_animation");
-            isOpened = false;
-        } else {
-            anim["open_animation"].wrapMode = WrapMode.Once;
-            anim.Play("open_animation");
+            Debug.Log("Close box");
+        } else {        // If it's closed open it
+            anim.CrossFade("OpenBox", 0.5f);
             isOpened = true;
+            Debug.Log("Open box");
         }
     }
 }
