@@ -20,16 +20,16 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     void Start () {
         isGrabbed = false;
-	}
+    }
 	
     /**
      * The position of the grabbed object is updated every frame.
      */
-	void Update () {
+    void Update () {
         if (isGrabbed && isMoveable) {  // Checks whether the object is grabbed and moveable
             this.transform.position = Camera.main.transform.position + Camera.main.transform.forward * grabbedDistance;
         }
-	}
+    }
 
     /**
      * When the object is clicked the grabbed property is toggled. If the object
