@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fuse10
+  - Fuse15
+  - Fuse20
+  - FuseBroken
   layers:
   - Default
   - TransparentFX
