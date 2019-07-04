@@ -8,7 +8,7 @@ using HoloToolkit.Unity.InputModule;
  * should apply this to ensure user feedback. The script easily changes
  * the shader of the focused object to a diffuse shader.
  * 
- * IMPORTANT: make sure the game objects uses a collider component
+ * IMPORTANT: make sure the game object uses a collider component
  */
 public class FocusableObject : MonoBehaviour, IFocusable {
 
