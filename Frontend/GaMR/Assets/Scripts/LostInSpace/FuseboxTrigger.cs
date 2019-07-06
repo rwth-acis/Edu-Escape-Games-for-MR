@@ -43,7 +43,7 @@ public class FuseboxTrigger : MonoBehaviour {
      */
     private void OnTriggerEnter(Collider collider) {
         GameObject gameObject = collider.gameObject;
-        Debug.Log("Was trigger by " + objectTag);
+        Debug.Log("Was trigger by " + gameObject.tag);
 
         switch (gameObject.tag) {
             case "Fuse10":

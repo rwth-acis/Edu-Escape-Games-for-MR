@@ -38,7 +38,6 @@ public class FocusableObject : MonoBehaviour, IFocusable {
     public void OnFocusEnter()
     {
         render.material.shader = focused;
-        Debug.Log("Focused object.", this);
     }
 
     /**
@@ -48,6 +47,5 @@ public class FocusableObject : MonoBehaviour, IFocusable {
     public void OnFocusExit()
     {
         render.material.shader = standard;
-        Debug.Log("Left focus.", this);
     }
 }

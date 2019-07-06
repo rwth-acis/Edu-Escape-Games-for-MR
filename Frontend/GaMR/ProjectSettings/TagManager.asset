@@ -8,6 +8,7 @@ TagManager:
   - Fuse15
   - Fuse20
   - FuseBroken
+  - Breadboard
   layers:
   - Default
   - TransparentFX
