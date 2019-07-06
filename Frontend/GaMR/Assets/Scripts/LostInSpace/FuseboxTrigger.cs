@@ -2,39 +2,95 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * This class is only for the fusebox game object. It manages, places and destroys
+ * the fuses. It checks whether the current fuse is the right and blocks it.
+ */
 public class FuseboxTrigger : MonoBehaviour {
 
-	// Use this for initialization
+    public string acceptingFuseTag;
+
+    private Vector3 fusePosition;
+    private GameObject currentFuse;
+    private GameObject oldFuse;
+
+	/**
+     * At the beginning set the broken fuse as current fuse and save its position
+     */
 	void Start () {
-		
+        currentFuse = GameObject.FindGameObjectWithTag("FuseBroken");
+        fusePosition = currentFuse.transform.position;
+        oldFuse = null;
 	}
 	
-	// Update is called once per frame
+	/**
+     * Move the current fuse to the right place and delete the old fuse.
+     */
 	void Update () {
-		
+		if (!currentFuse.transform.position.Equals(fusePosition)) {
+            currentFuse.transform.position = Vector3.Lerp(currentFuse.transform.position, fusePosition, Time.deltaTime);
+        }
+
+        if (oldFuse != null) {
+            Destroy(oldFuse);
+            oldFuse = null;
+        }
 	}
 
+    /**
+     * Is called when a game object (with rigid body) enters the collider. Check
+     * for the tag, identify the fuse and update it.
+     */
     private void OnTriggerEnter(Collider collider) {
-        string objectTag = collider.gameObject.tag;
-
+        GameObject gameObject = collider.gameObject;
         Debug.Log("Was trigger by " + objectTag);
 
-        switch (objectTag) {
+        switch (gameObject.tag) {
             case "Fuse10":
-                Debug.Log("Fuse 10");
+                UpdateCurrentFuse(gameObject);
                 break;
             case "Fuse15":
-                Debug.Log("Fuse 15");
+                UpdateCurrentFuse(gameObject);
                 break;
             case "Fuse20":
-                Debug.Log("Fuse 20");
+                UpdateCurrentFuse(gameObject);
                 break;
             case "FuseBroken":
-                Debug.Log("Fuse broken");
+                UpdateCurrentFuse(gameObject);
                 break;
             default:
                 Debug.Log("You can't put that here");
                 break;
         }
+    }
+
+    /**
+     * Stops grabbing of the fuse and updates it. If it is the right fuse
+     * Accept() it and Decline() if not.
+     */
+    private void UpdateCurrentFuse(GameObject gameObject) {
+        if (currentFuse.Equals(gameObject)) {   // Do not update if it is the same fuse
+            Debug.Log("It's the same fuse! Not changing it.");
+            return;
+        }
+
+        gameObject.GetComponent<GrabController>().StopGrabbing();       // Stop grabbing
+        gameObject.GetComponent<GrabController>().SetMoveable(false);   // Disable moveability
+        oldFuse = currentFuse;
+        currentFuse = gameObject;
+
+        if (acceptingFuseTag.Equals(currentFuse.tag)) {
+            Accept();
+        } else {
+            Decline();
+        }
+    }
+
+    private void Accept() {
+        // Visual and/or auditive effect for the right fuse
+    }
+
+    private void Decline() {
+        // Visual and/or auditive effect for the wrong fuse. Block the fuse for some minutes...
     }
 }

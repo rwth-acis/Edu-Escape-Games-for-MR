@@ -59,7 +59,17 @@ public class GrabController : MonoBehaviour, IInputClickHandler
         }
     }
 
-    public void stopGrabbing() {
+    /**
+     * Releases the grabbed object
+     */
+    public void StopGrabbing() {
         isGrabbed = false;
+    }
+
+    /**
+     * Changes the isMoveable state
+     */
+    public void SetMoveable(bool isMoveable) {
+        this.isMoveable = isMoveable;
     }
 }

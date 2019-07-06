@@ -1485,6 +1485,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: df43856fafbee29488f1353485c31c8f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.46186
@@ -1535,7 +1543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.694
+      value: -7.672
       objectReference: {fileID: 0}
     - target: {fileID: 2300006, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1551,7 +1559,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 1896d7868a73da44a882fe7e900f18a8, type: 2}
     - target: {fileID: 400008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -1572,6 +1580,10 @@ Prefab:
     - target: {fileID: 100008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_TagString
       value: FuseBroken
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: df43856fafbee29488f1353485c31c8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.419
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df43856fafbee29488f1353485c31c8f, type: 3}
@@ -2594,31 +2606,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.890204
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.71683455
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.6233826
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071059
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071078
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_RootOrder
@@ -2683,6 +2695,10 @@ Prefab:
     - target: {fileID: 100020, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_TagString
       value: Fuse20
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
@@ -2924,6 +2940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc472130ae674bb4eb558d22c5cce225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptingFuseTag: 
 --- !u!65 &1417836801
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3189,7 +3206,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1922470317
 MonoBehaviour:
