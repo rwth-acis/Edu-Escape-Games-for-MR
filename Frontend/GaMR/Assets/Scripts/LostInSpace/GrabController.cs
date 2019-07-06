@@ -14,6 +14,9 @@ public class GrabController : MonoBehaviour, IInputClickHandler
     public float grabbedDistance;   // Configures the distance of the object to the camera when grabbed
 
     private bool isGrabbed;         // Is the object currently grabbed
+    private int currentTime;
+    private readonly int transitionTime = 120;      // Transition time in frames
+    private readonly float speed = 2.5f;
     
     /**
      * On start the grabbed property is set to false.
@@ -27,7 +30,17 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     void Update () {
         if (isGrabbed && isMoveable) {  // Checks whether the object is grabbed and moveable
-            this.transform.position = Camera.main.transform.position + Camera.main.transform.forward * grabbedDistance;
+            Vector3 endPosition = Camera.main.transform.position + Camera.main.transform.forward * grabbedDistance;
+            Quaternion endRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
+
+            if (currentTime > 0) {      // Animate a tranistion if the object is grabbed
+                this.transform.position = Vector3.Lerp(transform.position, endPosition, speed * Time.deltaTime);
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, speed * Time.deltaTime);
+                currentTime--;
+            } else {                    // When transition ended just place the object
+                this.transform.position = endPosition;
+                this.transform.rotation = endRotation;
+            }
         }
     }
 
@@ -42,6 +55,11 @@ public class GrabController : MonoBehaviour, IInputClickHandler
             isGrabbed = false;
         } else {
             isGrabbed = true;
+            currentTime = transitionTime;       // Start transition
         }
+    }
+
+    public void stopGrabbing() {
+        isGrabbed = false;
     }
 }
