@@ -6,7 +6,18 @@ public class CircuitController : MonoBehaviour {
 
     private Tile[,] tiles;
     private int numTilesRegistered = 0;
-    private int[,] searchedTiles;
+
+    private bool[,,] correctPattern1 = new bool[4,6, 4] 
+        { { { true, false, false, false }, {true, false, true, false}, {true, false, true, false}, {false, true, false, false}, {false, false, false, true}, { true, true, true, true} },
+        { { true, false, true, false }, {true, false, false, false}, {true, false, true, false}, { true, true, true, true}, {true, false, false, false}, {true, false, true, false} },
+        { { true, false, true, false}, { true, true, true, true}, {true, false, true, false}, {false, false, true, false}, { true, true, true, true}, {true, false, true, false} },
+        { { true, true, true, true}, { false, true, false, false}, { false, true, false, true}, { false, true, false, true }, { true, true, true, true }, { true, true, true, true } } };
+
+    private bool[,,] correctPattern2 = new bool[4, 6, 4]
+        { { { true, false, false, false }, {true, false, true, false}, {true, false, true, false}, {false, false, true, false}, { true, true, true, true}, { true, true, true, true} },
+        { { true, false, true, false }, {true, false, false, false}, {true, false, false, false}, { true, true, true, true}, {true, false, true, false}, {true, false, true, false} },
+        { { true, false, true, false}, { true, true, true, true}, {true, false, true, false}, {false, false, true, false}, { true, true, true, true}, {true, false, true, false} },
+        { { true, true, true, true}, { false, true, false, false}, { false, true, false, true}, { false, true, false, true }, { true, true, true, true }, { true, true, true, true } } };
 
     // Use this for initialization
     void Start () {
@@ -27,119 +38,71 @@ public class CircuitController : MonoBehaviour {
     public void Decline() {
         Debug.Log("Not a solution!");
     }
- 
+
     public void TurnTile(int x, int y, float rotation) {
         tiles[x, y].Turn(rotation);
-        CheckTiles();
+
+        if (numTilesRegistered == 24) {
+            CheckTiles();
+        }
     }
 
     private void CheckTiles() {
-        searchedTiles = new int[6, 4];
-        bool[] result = CheckTile(5, 2, Tile.LEFT);
+        bool patternMatches = true;
 
-        for (int i = 0; i < result.Length; i++) {
-            if (result[i] == false) {
-                Decline();
-                return;
+        // First check some global constraints
+        if (tiles[5,1].getTimesTurned() == 2 && tiles[5,2].getTimesTurned() == 0) {
+            Debug.Log("Global constraints failed");
+            Decline();
+            return;
+        }
+
+        // Check first pattern
+        for (int x = 0; x < 6; x++) {
+            for (int y = 0; y < 4; y++) {
+                if (!correctPattern1[y,x,tiles[x,y].getTimesTurned()]) {
+                    patternMatches = false;
+                    Debug.Log("Pattern 1 fails because of " + x + ", " + y + ". Turned: " + tiles[x, y].getTimesTurned());
+                    goto Correct1End;
+                }
             }
         }
-        Accept();
-    }
 
-    private bool[] CheckTile(int x, int y, int inDirection) {
-        Debug.Log("Visit " + x + ", " + y + " in direction " + inDirection);
-        bool[] result;
-        if (x > 5 || x < 0 || y < 0 || y > 3) {
-            if (x == 3 && y == 4 && inDirection == Tile.UP) {
-                result = CheckTile(2, 3, Tile.DOWN);
-                Debug.Log("Go into 230 OUT right");
-                if (result[0] == result[1]) {
-                    result[2] = true;
+    Correct1End:
+        if (patternMatches) {
+            Debug.Log("First pattern matches");
+            Accept();
+            return;
+        }
+        patternMatches = true;
+
+        // Check second pattern
+        for (int x = 0; x < 6; x++) {
+            for (int y = 0; y < 4; y++) {
+                if (!correctPattern2[y, x, tiles[x, y].getTimesTurned()]) {
+                    patternMatches = false;
+                    Debug.Log("Pattern 2 fails because of " + x + ", " + y + ". Turned: " + tiles[x, y].getTimesTurned()); ;
+                    goto Correct2End;
                 }
-                return result;
-            } else if (x == 2 && y == 4 && inDirection == Tile.UP) {
-                result = CheckTile(3, 3, Tile.DOWN);
-                Debug.Log("Got into 230 Out left");
-                if (result[0] == result[1]) {
-                    result[2] = true;
-                }
-                return result;
-            } else if (x == -1 && y == 1 && inDirection == Tile.LEFT) {
-                result = CheckTile(0, 2, Tile.RIGHT);
-                result[0] = true;
-                Debug.Log("Go into 115 left down");
-                return result;
-            } else if (x == -1 && y == 2 && inDirection == Tile.LEFT) {
-                result = CheckTile(0, 1, Tile.RIGHT);
-                result[0] = true;
-                Debug.Log("Go into 115 left up");
-                return result;
-            } else if (x == 2 && y == -1 && inDirection == Tile.DOWN) {
-                result = CheckTile(3, 0, Tile.RIGHT);
-                result[1] = true;
-                Debug.Log("Go into 115 down left");
-                return result;
-            } else if (x == 3 && y == -1 && inDirection == Tile.DOWN) {
-                result = CheckTile(2, 0, Tile.RIGHT);
-                result[1] = true;
-                Debug.Log("Go into 115 down right");
-                return result;
-            } else if (x == 6 && y == 1 && inDirection == Tile.RIGHT) {
-                Debug.Log("Reached the exit");
-                return new bool[4] { false, false, false, true };
-            } else {
-                Debug.Log("Reached an dead end");
-                return new bool[4] { false, false, false, false};
             }
+        }
+    Correct2End:
+        if (patternMatches) {
+            Debug.Log("Second patter matches");
+            Accept();
         } else {
-            searchedTiles[x, y]++;
-            if (searchedTiles[x,y] > 2) {
-                Debug.Log("Checked this subtree alread twice. Return!");
-                return new bool[4] { false, false, false, false };
-            }
-
-            bool[] successors = tiles[x, y].SuccessorDirections(inDirection);
-            result = new bool[4];
-
-            for (int i = 0; i < successors.Length; i++) {
-                if (successors[i]) {
-                    int x1 = x;
-                    int y1 = y;
-                    if (i == Tile.UP) {
-                        y1++;
-                        Debug.Log("Go up");
-                    }
-                    if (i == Tile.RIGHT) {
-                        x1++;
-                        Debug.Log("Go right");
-                    }
-                    if (i == Tile.UP) {
-                        y1--;
-                        Debug.Log("Go down");
-                    }
-                    if (i == Tile.LEFT) {
-                        x1--;
-                        Debug.Log("Go left");
-                    }
-                    bool[] subresult = CheckTile(x1, y1, i);
-
-                    for (int j = 0; j < result.Length; j++) {
-                        result[j] = result[j] || subresult[j];
-                    }
-                }
-            }
-            Debug.Log("No where to go here. Return");
-            return result;
+            Decline();
         }
     }
+        
 
-    public void registerTile(int x, int y, bool[,] connections, float rotation) {
+    public void registerTile(int x, int y, float rotation) {
         if (tiles == null) {
             tiles = new Tile[6, 4];
         }
 
         if (tiles[x, y] == null) { 
-            tiles[x, y] = new Tile(connections, rotation);
+            tiles[x, y] = new Tile(rotation);
             numTilesRegistered++;
             Debug.Log("Registered " + numTilesRegistered + ". Tile at " + x + ", " + y + " with rotation " + rotation);
         } else {
@@ -148,17 +111,10 @@ public class CircuitController : MonoBehaviour {
     } 
 
     public class Tile {
-
-        public static readonly int UP = 0;
-        public static readonly int RIGHT = 1;
-        public static readonly int DOWN = 2;
-        public static readonly int LEFT = 3;
-
-        private bool[,] connections;
+        
         private float rotation;
 
-        public Tile(bool[,] connections, float rotation) {
-            this.connections = connections;
+        public Tile(float rotation) {
             this.rotation = rotation;
         }
 
@@ -166,25 +122,8 @@ public class CircuitController : MonoBehaviour {
             rotation = newRotation;
         }
 
-        public bool[] SuccessorDirections(int direction) {
-            int timesTurnesAdditional = 4 - getTimesTurned();
-            int localInDirection = (direction + timesTurnesAdditional) % 4;
-            bool[] globalOutDirections = new bool[4];
-            
-            for (int i = 0; i < 4; i++) {
-                Debug.Log("Search direction " + i + " from " + localInDirection );
-                if (connections[localInDirection, i]) {
-                    globalOutDirections[(i + timesTurnesAdditional) % 4] = true;
-                }
-            }
-
-            globalOutDirections[direction] = false;
-            return globalOutDirections;
-        }
-
-        private int getTimesTurned() {
+        public int getTimesTurned() {
             int timesRotated = (int) (rotation % 360)/90;
-            Debug.Log("Times rotated " + timesRotated + " degrees " + rotation);
             return timesRotated;
         }
     }

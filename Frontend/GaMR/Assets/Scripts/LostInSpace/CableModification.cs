@@ -9,12 +9,6 @@ using HoloToolkit.Unity.InputModule;
  */
 public class CableModification : MonoBehaviour, IInputClickHandler {
 
-    private readonly bool[,] STRAIGHT_CON = new bool[4, 4] { { false, false, false, false }, { false, false, false, true }, { false, false, false, false }, { false, true, false, false } };
-    private readonly bool[,] CURVE_CON = new bool[4, 4] { { false, true, false, false }, { true, false, false, false }, { false, false, false, false }, { false, false, false, false } };
-    private readonly bool[,] TCURVE_CON = new bool[4, 4] { { false, false, false, false }, { false, false, true, true }, { false, true, false, true }, { false, true, true, false } };
-    private readonly bool[,] CROSS_CON = new bool[4, 4] { { false, false, true, false }, { false, false, false, true }, { true, false, false, false }, { false, true, false, false } };
-    private readonly bool[,] INVERTEDX_CON = new bool[4, 4] { { false, true, false, false }, { true, false, false, false }, { false, false, false, true }, { false, false, true, false } };
-
     public static readonly int STRAIGHT_CON_INDEX = 0;
     public static readonly int CURVE_CON_INDEX = 1;
     public static readonly int TCURVE_CON_INDEX = 2;
@@ -30,7 +24,12 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
 
     void Awake() {
         breadboard = GameObject.FindGameObjectWithTag("Breadboard");
-        breadboard.GetComponent<CircuitController>().registerTile(x, y, getConnections(tileType), rotation);
+        breadboard.GetComponent<CircuitController>().registerTile(x, y, rotation);
+
+        int rotations = Random.Range(0, 4);
+        for (int i = 0; i < rotations; i++) {
+            TurnCable();
+        }
     }
 
     /**
@@ -39,27 +38,12 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
     public void OnInputClicked(InputClickedEventData eventData)
     {
         Debug.Log("Cable " + x + ", " + y + " was clicked. Turn 90 degrees");
+        TurnCable();
+    }
+
+    private void TurnCable() {
         this.transform.Rotate(0, 0, 90, Space.Self);    // 90 degrees in z axis and local space!
         rotation = (rotation + 90) % 360;
         breadboard.GetComponent<CircuitController>().TurnTile(x, y, rotation);
-    }
-
-    private bool[,] getConnections(int tileType) {
-        switch (tileType) {
-            case 0:
-                return STRAIGHT_CON;
-            case 1:
-                return CURVE_CON;
-            case 2:
-                return TCURVE_CON;
-            case 3:
-                return CROSS_CON;
-            case 4:
-                return INVERTEDX_CON;
-            default:
-                Debug.LogWarning("Undefined tile type!");
-                break;
-        }
-        return null;
     }
 }
