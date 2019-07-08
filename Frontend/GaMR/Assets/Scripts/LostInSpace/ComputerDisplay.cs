@@ -4,47 +4,72 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Script that is applied to the main monitor of the board computer.
+ * It manages the content and the input of the touch pad.
+ */
 public class ComputerDisplay : MonoBehaviour {
     
+    // Configure the pin and the right charge
     public string requieredPin;
     public string correctChargeTime;
+    public GameObject keyboard;
     
+    // Interal variables
     private int underscoreBlink = 0;
-    private bool DisplayEnabled;
+    private bool DisplayEnabled = false;
     private Text text;
     private bool passwordEnteringMode = true;
     private string currentPin = "";
     private string currentTime = "";
 
+    // Currently displayed content (lines)
     private List<string> lines;
 
-	// Use this for initialization
+	/**
+     * On start the computer is turned of. So don't show something 
+     * on the screen and disable the touch pad
+     */
 	void Start () {
         text = GetComponent<Text>();
-        AddLine("Booting...");
-        EnterPassword();
+        text.text = "";
+        keyboard.SetActive(false);
 	}
 	
-	// Update is called once per frame
+	/**
+     * Update the monitor content
+     */
 	void Update () {
-        if (lines == null) {
+        if (lines == null) {    // If there is no content return
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
+        if (!DisplayEnabled) {  // If the display isn't enabled return
+            text.text = "";
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder(); // Build the display string together
         for (int i = 0; i < lines.Count; i++) {
             sb.Append(lines[i] + (i == lines.Count - 1 ? GetBlinkingUnderscore() : "") + "\n");
         }
         text.text = sb.ToString();
 	}
 
+    /**
+     * Toggle display active
+     */
     public void SetIsDisplayEnabled(bool DisplayEnabled) {
         this.DisplayEnabled = DisplayEnabled;
     }
 
+    /**
+     * This method should be called whenever a key is pressed.
+     * The new letter is then added to the displayed content
+     */
     public void Typing(string input) {
-        if (input.Equals("enter")) {
-            if (passwordEnteringMode) {
+        if (input.Equals("enter")) {    // Enter button checks the current entry
+            if (passwordEnteringMode) { // Check for the correct password
                 AddLine("");
                 if (currentPin.Equals(requieredPin)) {
                     AddLine("*** ACCESS GRANTED ***");
@@ -54,7 +79,7 @@ public class ComputerDisplay : MonoBehaviour {
                     AddLine("*** ACCESS DENIED ***");
                     EnterPassword();
                 }
-            } else {
+            } else {                    // Check for the correct charge
                 AddLine("Charge engine " + currentTime + "s...");
                 AddLine("");
                 if (currentTime.Equals(correctChargeTime)) {
@@ -62,13 +87,14 @@ public class ComputerDisplay : MonoBehaviour {
                     AddLine("Engine 2 started!");
                     AddLine("");
                     AddLine("Launching...");
+                    QuestManager.GetInstance().EngineStarted();
                 } else {
                     AddLine("Something went wrong... Try with another charge time!");
                     EnterTime();
                 }
             }
-        } else {
-            if (passwordEnteringMode) {
+        } else {    // Added a letter
+            if (passwordEnteringMode) { // Only add a star in password mode
                 lines[lines.Count - 1] = lines[lines.Count - 1] + "*";
                 currentPin = currentPin + input;
             } else {
@@ -78,6 +104,11 @@ public class ComputerDisplay : MonoBehaviour {
         }
     }
 
+    /**
+     * Adds a new line to the display content. If there are
+     * already 10 line on the screen the oldes lines is
+     * deleted automatically
+     */
     private void AddLine(string line) {
         if (lines == null) {
             lines = new List<string>();
@@ -88,6 +119,11 @@ public class ComputerDisplay : MonoBehaviour {
         lines.Add(line);
     }
 
+    /**
+     * Return 20 times an underscore and the next 20 times
+     * an empty string. Calling this in the Update() method
+     * achieves a blinking underscore
+     */
     private string GetBlinkingUnderscore() {
         underscoreBlink++;
         if (underscoreBlink > 20) {
@@ -100,6 +136,9 @@ public class ComputerDisplay : MonoBehaviour {
         }
     }
 
+    /**
+     * Adds the desired lines to the display and configures the mode
+     */
     private void EnterPassword() {
         passwordEnteringMode = true;
         currentPin = "";
@@ -107,10 +146,31 @@ public class ComputerDisplay : MonoBehaviour {
         AddLine("");
     }
 
+    /**
+     * Adds the desired lines to the display and configures the mode
+     */
     private void EnterTime() {
         passwordEnteringMode = false;
         currentTime = "";
         AddLine("Specify a charge time to start the engines:");
         AddLine("Charge time in seconds: ");
+    }
+
+    /**
+     * Turns on the computer
+     */
+    public void StartComputer() {
+        StartCoroutine(BootComputer());
+    }
+
+    /**
+     * A nested method to get a delayed boot and password request
+     */
+    private IEnumerator BootComputer() {
+        DisplayEnabled = true;
+        AddLine("Booting...");
+        yield return new WaitForSeconds(10);
+        keyboard.SetActive(true);
+        EnterPassword();
     }
 }

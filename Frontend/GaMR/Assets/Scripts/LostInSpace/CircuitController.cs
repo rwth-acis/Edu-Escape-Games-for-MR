@@ -35,6 +35,7 @@ public class CircuitController : MonoBehaviour {
      */
     public void Accept() {
         Debug.Log("You have found a solution!");
+        QuestManager.GetInstance().CircuitFixed();
     }
 
     /**
@@ -50,7 +51,7 @@ public class CircuitController : MonoBehaviour {
     public void TurnTile(int x, int y, float rotation) {
         tiles[x, y].Turn(rotation);
 
-        if (numTilesRegistered == 24) {
+        if (numTilesRegistered == 24 && !QuestManager.GetInstance().IsCircuitFixed()) {
             CheckTiles();
         }
     }

@@ -45,6 +45,11 @@ public class FuseboxTrigger : MonoBehaviour {
         GameObject gameObject = collider.gameObject;
         Debug.Log("Was trigger by " + gameObject.tag);
 
+        if (QuestManager.GetInstance().IsFuseFixed()) {
+            Debug.Log("The quest is already solved");
+            return;
+        }
+
         switch (gameObject.tag) {
             case "Fuse10":
                 UpdateCurrentFuse(gameObject);
@@ -87,6 +92,7 @@ public class FuseboxTrigger : MonoBehaviour {
     }
 
     private void Accept() {
+        QuestManager.GetInstance().FuseFixed();
         // Visual and/or auditive effect for the right fuse
     }
 

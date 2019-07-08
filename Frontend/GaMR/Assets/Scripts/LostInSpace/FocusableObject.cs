@@ -20,7 +20,7 @@ public class FocusableObject : MonoBehaviour, IFocusable {
      * On start the renderer and the needed shaders are loaded.
      */
     void Start () {
-        render = GetComponentInChildren<Renderer>();
+        render = GetComponent<Renderer>();
         standard = render.material.shader;  // Load the shader applied in the inspector
         focused = Shader.Find("Diffuse");   // Load the diffuse shader
 
