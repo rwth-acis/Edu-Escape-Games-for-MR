@@ -11,6 +11,7 @@ public class FuseboxTrigger : MonoBehaviour {
     public string acceptingFuseTag;
 
     private Vector3 fusePosition;
+    private Quaternion fuseRotation;
     private GameObject currentFuse;
     private GameObject oldFuse;
 
@@ -20,6 +21,7 @@ public class FuseboxTrigger : MonoBehaviour {
 	void Start () {
         currentFuse = GameObject.FindGameObjectWithTag("FuseBroken");
         fusePosition = currentFuse.transform.position;
+        fuseRotation = currentFuse.transform.rotation;
         oldFuse = null;
 	}
 	
@@ -27,8 +29,9 @@ public class FuseboxTrigger : MonoBehaviour {
      * Move the current fuse to the right place and delete the old fuse.
      */
 	void Update () {
-		if (!currentFuse.transform.position.Equals(fusePosition)) {
+		if (!currentFuse.transform.position.Equals(fusePosition) && !currentFuse.transform.rotation.Equals(fuseRotation)) {
             currentFuse.transform.position = Vector3.Lerp(currentFuse.transform.position, fusePosition, Time.deltaTime);
+            currentFuse.transform.rotation = Quaternion.Lerp(currentFuse.transform.rotation, fuseRotation, Time.deltaTime);
         }
 
         if (oldFuse != null) {
