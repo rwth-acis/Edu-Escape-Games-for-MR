@@ -775,8 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a3c2e3d49f7fc40890561af498dacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requieredPin: 1234
-  correctChargeTime: 12
+  requieredPin: 28032097
+  requiredChargeVoltage: 
   keyboard: {fileID: 524773663}
 --- !u!1 &438106539 stripped
 GameObject:

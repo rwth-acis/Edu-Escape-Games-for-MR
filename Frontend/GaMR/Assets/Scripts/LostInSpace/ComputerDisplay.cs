@@ -12,7 +12,7 @@ public class ComputerDisplay : MonoBehaviour {
     
     // Configure the pin and the right charge
     public string requieredPin;
-    public string correctChargeTime;
+    public string requiredChargeVoltage;
     public GameObject keyboard;
     
     // Interal variables
@@ -21,7 +21,7 @@ public class ComputerDisplay : MonoBehaviour {
     private Text text;
     private bool passwordEnteringMode = true;
     private string currentPin = "";
-    private string currentTime = "";
+    private string currentVoltage = "";
 
     // Currently displayed content (lines)
     private List<string> lines;
@@ -80,16 +80,16 @@ public class ComputerDisplay : MonoBehaviour {
                     EnterPassword();
                 }
             } else {                    // Check for the correct charge
-                AddLine("Charge engine " + currentTime + "s...");
+                AddLine("Charge engine with " + currentVoltage + "V");
                 AddLine("");
-                if (currentTime.Equals(correctChargeTime)) {
+                if (currentVoltage.Equals(requiredChargeVoltage)) {
                     AddLine("Engine 1 started!");
                     AddLine("Engine 2 started!");
                     AddLine("");
                     AddLine("Launching...");
                     QuestManager.GetInstance().EngineStarted();
                 } else {
-                    AddLine("Something went wrong... Try with another charge time!");
+                    AddLine("Something went wrong... Try with another charge voltage!");
                     EnterTime();
                 }
             }
@@ -99,7 +99,7 @@ public class ComputerDisplay : MonoBehaviour {
                 currentPin = currentPin + input;
             } else {
                 lines[lines.Count - 1] = lines[lines.Count - 1] + input;
-                currentTime = currentTime + input;
+                currentVoltage = currentVoltage + input;
             }
         }
     }
@@ -142,7 +142,7 @@ public class ComputerDisplay : MonoBehaviour {
     private void EnterPassword() {
         passwordEnteringMode = true;
         currentPin = "";
-        AddLine("Please enter your password to continue:");
+        AddLine("Please enter your personal pincode to continue:");
         AddLine("");
     }
 
@@ -151,9 +151,9 @@ public class ComputerDisplay : MonoBehaviour {
      */
     private void EnterTime() {
         passwordEnteringMode = false;
-        currentTime = "";
-        AddLine("Specify a charge time to start the engines:");
-        AddLine("Charge time in seconds: ");
+        currentVoltage = "";
+        AddLine("The engine capacitor need to be loaded before launching!");
+        AddLine("Specify charging tension in volts: ");
     }
 
     /**
