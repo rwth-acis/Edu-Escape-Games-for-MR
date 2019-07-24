@@ -23,3 +23,5 @@ Sample renders of game objects used in the The Cell scenario.
 ![alt text](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/the_cell/sample_renders/nucleus.png "Nucleus")
 
 ![alt text](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/the_cell/sample_renders/er.png "Rough and smooth endoplasmic reticulum")
+
+![alt text](https://github.com/rwth-acis/Edu-Escape-Games-for-MR/blob/master/Frontend/GaMR/Assets/Models/the_cell/sample_renders/golgi.png "Golgi Apparatus")
