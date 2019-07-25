@@ -10,6 +10,7 @@ ModelImporter:
     100008: mitochondria_innner_membrane
     100010: ribosome
     100012: ribosome_001
+    100014: Sphere
     400000: atp_synthase
     400002: Cube
     400004: //RootNode
@@ -17,6 +18,7 @@ ModelImporter:
     400008: mitochondria_innner_membrane
     400010: ribosome
     400012: ribosome_001
+    400014: Sphere
     2100000: unnamed
     2100002: membrane
     2100004: ribosome
@@ -27,18 +29,21 @@ ModelImporter:
     2300006: mitochondria_innner_membrane
     2300008: ribosome
     2300010: ribosome_001
+    2300012: Sphere
     3300000: atp_synthase
     3300002: Cube
     3300004: mitochondria
     3300006: mitochondria_innner_membrane
     3300008: ribosome
     3300010: ribosome_001
+    3300012: Sphere
     4300000: Cube
     4300002: mitochondria
     4300004: ribosome
     4300006: ribosome_001
     4300008: mitochondria_innner_membrane
     4300010: atp_synthase
+    4300012: Sphere
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
