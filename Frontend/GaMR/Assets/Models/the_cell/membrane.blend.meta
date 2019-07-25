@@ -9,32 +9,38 @@ ModelImporter:
     100006: //RootNode
     100008: outer_membrane
     100010: protein
+    100012: chain
     400000: Cube
     400002: inner_membrane
     400004: lipid
     400006: //RootNode
     400008: outer_membrane
     400010: protein
+    400012: chain
     2100000: unnamed
     2100002: membrane
     2100004: protein
     2100006: lipid_head
     2100008: lipid_tail
+    2100010: sugar_chain
     2300000: Cube
     2300002: inner_membrane
     2300004: lipid
     2300006: outer_membrane
     2300008: protein
+    2300010: chain
     3300000: Cube
     3300002: inner_membrane
     3300004: lipid
     3300006: outer_membrane
     3300008: protein
+    3300010: chain
     4300000: Cube
     4300002: outer_membrane
     4300004: protein
     4300006: inner_membrane
     4300008: lipid
+    4300010: chain
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
