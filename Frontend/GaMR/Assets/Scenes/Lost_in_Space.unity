@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requieredPin: 28032097
-  requiredChargeVoltage: 
+  requiredChargeVoltage: 20
   keyboard: {fileID: 524773663}
 --- !u!1 &438106539 stripped
 GameObject:
