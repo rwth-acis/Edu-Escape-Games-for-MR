@@ -37,6 +37,7 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
     {
         Debug.Log("Cable " + x + ", " + y + " was clicked. Turn 90 degrees");
         TurnCable();
+        QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.ElectricCircuit);
     }
 
     /**

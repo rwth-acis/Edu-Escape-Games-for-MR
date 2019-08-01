@@ -61,6 +61,7 @@ public class LookAtController : MonoBehaviour, IInputClickHandler {
             flowAwayAnimationFrame = 0;
             Debug.Log("Put look at object away");
         } else {
+            QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.Document);
             lookingAt = true;
             Debug.Log("Look at object");
         }

@@ -70,6 +70,8 @@ public class ComputerDisplay : MonoBehaviour {
     public void Typing(string input) {
         if (input.Equals("enter")) {    // Enter button checks the current entry
             if (passwordEnteringMode) { // Check for the correct password
+                QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.ComputerPassword);
+
                 AddLine("");
                 if (currentPin.Equals(requieredPin)) {
                     AddLine("*** ACCESS GRANTED ***");
@@ -80,6 +82,8 @@ public class ComputerDisplay : MonoBehaviour {
                     EnterPassword();
                 }
             } else {                    // Check for the correct charge
+                QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.Voltage);
+
                 AddLine("Charge engine with " + currentVoltage + "V");
                 AddLine("");
                 if (currentVoltage.Equals(requiredChargeVoltage)) {

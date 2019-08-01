@@ -60,5 +60,7 @@ public class BoxController : MonoBehaviour, IInputClickHandler {
             isOpened = true;
             Debug.Log("Open box");
         }
+
+        QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
     }
 }

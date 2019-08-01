@@ -47,6 +47,7 @@ public class GrabController : MonoBehaviour, IInputClickHandler
         if (isGrabbed || !isMoveable) {
             isGrabbed = false;
         } else {
+            QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
             isGrabbed = true;
         }
     }
