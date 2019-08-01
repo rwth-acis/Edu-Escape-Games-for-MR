@@ -77,6 +77,7 @@ public class ComputerDisplay : MonoBehaviour {
                     AddLine("*** ACCESS GRANTED ***");
                     AddLine("Welcome! You are now logged in.");
                     EnterTime();
+                    QuestManager.GetInstance().ComputerLogin();
                 } else {
                     AddLine("*** ACCESS DENIED ***");
                     EnterPassword();

@@ -70,8 +70,6 @@ public class FuseboxTrigger : MonoBehaviour {
                 Debug.Log("You can't put that here");
                 break;
         }
-
-        QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
     }
 
     /**

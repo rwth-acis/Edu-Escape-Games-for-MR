@@ -10,8 +10,9 @@ public class HintsManager : MonoBehaviour {
 
     void Start() {
         setHint(null, null);
+        QuestManager.GetInstance().setHintsManager(this);
     }
-
+    
     public void setHint(string hintText, Sprite hintImage) {
         if (hintText == null) {
             this.hintText.gameObject.SetActive(false);

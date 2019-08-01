@@ -10,6 +10,7 @@ TagManager:
   - FuseBroken
   - Breadboard
   - ComputerDisplay
+  - HintDisplay
   layers:
   - Default
   - TransparentFX

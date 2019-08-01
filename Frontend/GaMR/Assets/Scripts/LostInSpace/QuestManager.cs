@@ -9,6 +9,8 @@ public class QuestManager {
 
     // HintsManager for pushing hints to the user
     private HintsManager hintsManager;
+    private Dictionary<Quest, Hints.Hint[]> hints;
+    private float lastDisplayedHintTime = 20f;  // Initialize with 20 to display hints from sec 30
 
     public enum Quest {
         BrokenFuse, ElectricCircuit, ComputerPassword, Voltage, Document, None
@@ -23,10 +25,8 @@ public class QuestManager {
     private Quest currentQuest = Quest.None;
     private float timeStartedQuest = 0f;
 
-    // Markes showing quich quest are completed
-    private bool fusefixed = false;
-    private bool circuitfixed = false;
-    private bool engineStarted = false;
+    // Markes showing which quest are completed
+    private Dictionary<Quest, bool> questsSolved;
 
     /**
      * Creates a new QuestManager. Therefore the HintsManager (attached to the HintDisplay)
@@ -34,16 +34,27 @@ public class QuestManager {
      */
     private QuestManager() {
         questInformation = new Dictionary<Quest, QuestInfo>();
+        questInformation.Add(Quest.BrokenFuse, new QuestInfo());
+        questInformation.Add(Quest.ElectricCircuit, new QuestInfo());
+        questInformation.Add(Quest.ComputerPassword, new QuestInfo());
+        questInformation.Add(Quest.Voltage, new QuestInfo());
+        questInformation.Add(Quest.Document, new QuestInfo());
+        questInformation.Add(Quest.None, new QuestInfo());
+
+        questsSolved = new Dictionary<Quest, bool>();
+        questsSolved.Add(Quest.BrokenFuse, false);
+        questsSolved.Add(Quest.ElectricCircuit, false);
+        questsSolved.Add(Quest.ComputerPassword, false);
+        questsSolved.Add(Quest.Voltage, false);
+        questsSolved.Add(Quest.Document, false);
+        questsSolved.Add(Quest.None, false);
+
+        hints = Hints.getHints();
     }
 
     public void currentlyWorkingOn(Quest quest) {
         if (currentQuest != quest) {
-            QuestInfo currentQuestInfo = questInformation.ContainsKey(currentQuest) ?  questInformation[currentQuest] : null;
-
-            if (currentQuestInfo == null) {
-                currentQuestInfo = new QuestInfo();
-                questInformation.Add(currentQuest, currentQuestInfo);
-            }
+            QuestInfo currentQuestInfo = questInformation[currentQuest];
 
             if (Time.time > 30) {
                 currentQuestInfo.timeSpent += Time.time - timeStartedQuest;
@@ -55,6 +66,31 @@ public class QuestManager {
             currentQuest = quest;
             timeStartedQuest = Time.time;
         }
+    }
+
+    public void checkDisplayHints() {
+        if (Time.time - lastDisplayedHintTime < 10f || !hints.ContainsKey(currentQuest)) {
+            // Do not show a hint within the next 10 seconds
+            return;
+        }
+        Debug.Log("Check for displaying hint");
+
+        Quest checkQuest = currentQuest;
+        QuestInfo checkInfo = questInformation[checkQuest];
+        float currentTime = Time.time - timeStartedQuest;
+
+        float timeWorkedOn = checkInfo.timeSpent + currentTime;
+        int hintLevel = (int)(timeWorkedOn / 60);
+
+        if (hintLevel > checkInfo.hintsShown && hintLevel <= hints[checkQuest].Length && !questsSolved[checkQuest]) {
+            hintsManager.setHint(hints[checkQuest][hintLevel - 1].hintText, hints[checkQuest][hintLevel - 1].hintImage);
+            checkInfo.hintsShown++;
+            Debug.Log("Displayed hint");
+        }
+    }
+
+    public void setHintsManager(HintsManager hintsManager) {
+        this.hintsManager = hintsManager;
     }
 
     /**
@@ -71,7 +107,7 @@ public class QuestManager {
      * Should only be called if the fuse quest is completed
      */
     public void FuseFixed() {
-        fusefixed = true;
+        questsSolved[Quest.BrokenFuse] = true;
         Debug.Log("Quest solved: Broken fuse");
         CheckComputerBoot();
     }
@@ -80,16 +116,21 @@ public class QuestManager {
      * Should only be called if the electric circuit quest is completed
      */
     public void CircuitFixed() {
-        circuitfixed = true;
+        questsSolved[Quest.ElectricCircuit] = true;
         Debug.Log("Quest solved: Electric Circuit");
         CheckComputerBoot();
+    }
+
+    public void ComputerLogin() {
+        questsSolved[Quest.ComputerPassword] = true;
+        Debug.Log("Quest solved: Computer Password");
     }
 
     /**
      * Should only be called if the charge engine quest is completed
      */
     public void EngineStarted() {
-        engineStarted = true;
+        questsSolved[Quest.Voltage] = true;
         Debug.Log("Congratulations, you won the game!");
     }
 
@@ -98,7 +139,7 @@ public class QuestManager {
      * and boots the computer if yes
      */
     private void CheckComputerBoot() {
-        if (fusefixed && circuitfixed) {
+        if (questsSolved[Quest.BrokenFuse] && questsSolved[Quest.ElectricCircuit]) {
             GameObject.FindGameObjectWithTag("ComputerDisplay").GetComponent<ComputerDisplay>().StartComputer();
         }
     }
@@ -107,13 +148,17 @@ public class QuestManager {
      * Simple getter method for the FuseBox Quest completed
      */
     public bool IsFuseFixed() {
-        return fusefixed;
+        return questsSolved[Quest.BrokenFuse];
     }
 
     /**
      * Simple getter method for the ElectricCircuit Quest completed
      */
     public bool IsCircuitFixed() {
-        return circuitfixed;
+        return questsSolved[Quest.ElectricCircuit];
     }
-}
+
+    public void GameOver() {
+        Debug.Log("GameOver! You ran out of time.");
+    }
+ }

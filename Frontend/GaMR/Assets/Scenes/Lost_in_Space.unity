@@ -974,7 +974,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 80 %
+  m_Text: 100%
 --- !u!222 &458649815
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 520406833}
   m_Layer: 5
   m_Name: HintDisplay
-  m_TagString: Untagged
+  m_TagString: HintDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1484,6 +1484,7 @@ GameObject:
   - component: {fileID: 679081160}
   - component: {fileID: 679081159}
   - component: {fileID: 679081158}
+  - component: {fileID: 679081161}
   m_Layer: 5
   m_Name: OxygenDisplay
   m_TagString: Untagged
@@ -1568,6 +1569,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &679081161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 679081156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0f22566a2202146897f7d76ef212d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygenText: {fileID: 458649814}
+  timeLimitInMinutes: 20
 --- !u!1001 &720330551
 Prefab:
   m_ObjectHideFlags: 0
@@ -4503,7 +4517,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
