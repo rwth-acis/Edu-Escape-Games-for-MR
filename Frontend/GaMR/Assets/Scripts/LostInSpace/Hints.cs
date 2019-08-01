@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hints {
 
-    private static readonly string[] hintsFuse = {"Click and drag a fuse. Move it into the fuse box.", "You can calculate the right fuse with Ohm's law.", "The Ohm's law is U = R I", "Rearrange the formula: I = U/R"};
+    private static readonly string[] hintsFuse = {"Click and drag the right fuse. Move it into the fuse box.", "You can calculate the right fuse with Ohm's law.", "The Ohm's law is U = R I", "Rearrange the formula: I = U/R"};
     private static readonly string[] hintsFuseImg = { };
 
     private static readonly string[] hintsCircuit = { "Turn the cables by clicking. The resistance of all outputs is the same.", "Create an electric circuit that applies the right tension at the outputs. The resistance of all outputs is the same.", "Try to recreate this circuit:" };

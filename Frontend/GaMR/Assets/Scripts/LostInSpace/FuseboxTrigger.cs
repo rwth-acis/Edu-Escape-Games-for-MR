@@ -15,6 +15,8 @@ public class FuseboxTrigger : MonoBehaviour {
     private GameObject currentFuse;
     private GameObject oldFuse;
 
+    private float lastPlaced = 0f;
+
 	/**
      * At the beginning set the broken fuse as current fuse and save its position
      */
@@ -52,6 +54,12 @@ public class FuseboxTrigger : MonoBehaviour {
             Debug.Log("The quest is already solved");
             return;
         }
+
+        if (lastPlaced != 0f && Time.time - lastPlaced < 60) {
+            Debug.Log("The fuse is overheating... Waited: " + (Time.time - lastPlaced));
+            return;
+        }
+        lastPlaced = Time.time;
 
         switch (gameObject.tag) {
             case "Fuse10":
@@ -100,6 +108,17 @@ public class FuseboxTrigger : MonoBehaviour {
     }
 
     private void Decline() {
+        startParticles();
         // Visual and/or auditive effect for the wrong fuse. Block the fuse for some minutes...
+    }
+
+    private IEnumerator stopParticles() {
+        yield return new WaitForSeconds(60);
+        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 0;
+    }
+
+    private void startParticles() {
+        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 5;
+        StartCoroutine(stopParticles());
     }
 }
