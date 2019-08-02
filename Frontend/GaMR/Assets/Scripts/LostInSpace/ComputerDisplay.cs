@@ -94,17 +94,18 @@ public class ComputerDisplay : MonoBehaviour {
                     AddLine("Launching...");
                     QuestManager.GetInstance().EngineStarted();
                 } else {
-                    AddLine("Something went wrong... Try with another charge voltage!");
-                    EnterTime();
+                    StartCoroutine(loadCapacitor());
                 }
             }
         } else {    // Added a letter
             if (passwordEnteringMode) { // Only add a star in password mode
                 lines[lines.Count - 1] = lines[lines.Count - 1] + "*";
                 currentPin = currentPin + input;
+                QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.ComputerPassword);
             } else {
                 lines[lines.Count - 1] = lines[lines.Count - 1] + input;
                 currentVoltage = currentVoltage + input;
+                QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.Voltage);
             }
         }
     }
@@ -177,5 +178,15 @@ public class ComputerDisplay : MonoBehaviour {
         yield return new WaitForSeconds(10);
         keyboard.SetActive(true);
         EnterPassword();
+    }
+
+    private IEnumerator loadCapacitor() {
+        AddLine("Launching engine FAILED!");
+        AddLine("Overheating... Wait for cooling down...");
+        keyboard.SetActive(false);
+
+        yield return new WaitForSeconds(10);
+        keyboard.SetActive(true);
+        EnterTime();
     }
 }

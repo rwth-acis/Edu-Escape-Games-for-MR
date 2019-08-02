@@ -118,7 +118,7 @@ public class FuseboxTrigger : MonoBehaviour {
     }
 
     private void startParticles() {
-        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 5;
+        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 100;
         StartCoroutine(stopParticles());
     }
 }
