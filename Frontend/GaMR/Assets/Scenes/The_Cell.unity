@@ -145,7 +145,7 @@ MonoBehaviour:
   er: {fileID: 1862586238}
   nucleus: {fileID: 1471333110}
   golgi: {fileID: 497592142}
-  isEditMode: 1
+  isEditMode: 0
 --- !u!4 &4002895
 Transform:
   m_ObjectHideFlags: 0
