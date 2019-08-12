@@ -59,6 +59,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void cellOrganesDone() {
-        currentMode
+        //currentMode
     }
 }

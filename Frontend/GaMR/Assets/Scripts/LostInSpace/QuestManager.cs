@@ -27,6 +27,7 @@ public class QuestManager {
 
     // Markes showing which quest are completed
     private Dictionary<Quest, bool> questsSolved;
+    private bool gameIsOver = false;
 
     /**
      * Creates a new QuestManager. Therefore the HintsManager (attached to the HintDisplay)
@@ -160,5 +161,9 @@ public class QuestManager {
 
     public void GameOver() {
         Debug.Log("GameOver! You ran out of time.");
+    }
+
+    public bool getIsGameOver() {
+        return gameIsOver;
     }
  }

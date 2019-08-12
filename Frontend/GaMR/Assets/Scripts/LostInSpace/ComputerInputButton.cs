@@ -8,6 +8,8 @@ public class ComputerInputButton : MonoBehaviour {
     // The key the button is representing
     public string key;
 
+    public AudioSource clickAudio;
+
     private Button button;
     private GameObject computer;
 
@@ -25,5 +27,6 @@ public class ComputerInputButton : MonoBehaviour {
      */
     private void OnClick() {
         computer.GetComponent<ComputerDisplay>().Typing(key);
+        clickAudio.Play();
     }
 }

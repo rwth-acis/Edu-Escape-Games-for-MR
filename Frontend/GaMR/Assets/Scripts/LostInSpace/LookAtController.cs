@@ -9,6 +9,9 @@ public class LookAtController : MonoBehaviour, IInputClickHandler {
     public float lookAtDistance;
     public float speed;
 
+    public AudioSource takeAudio;
+    public AudioSource putAudio;
+
     // Current state and orignal position and rotation
     private bool lookingAt = false;
     private Vector3 originalPosition;
@@ -59,10 +62,12 @@ public class LookAtController : MonoBehaviour, IInputClickHandler {
         if (lookingAt) {
             lookingAt = false;
             flowAwayAnimationFrame = 0;
+            putAudio.Play();
             Debug.Log("Put look at object away");
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.Document);
             lookingAt = true;
+            takeAudio.Play();
             Debug.Log("Look at object");
         }
     }

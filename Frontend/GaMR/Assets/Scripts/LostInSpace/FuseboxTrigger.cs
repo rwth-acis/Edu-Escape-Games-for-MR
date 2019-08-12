@@ -10,6 +10,9 @@ public class FuseboxTrigger : MonoBehaviour {
 
     public string acceptingFuseTag;
 
+    public AudioSource currentSource;
+    public AudioSource fuseBreak;
+
     private Vector3 fusePosition;
     private Quaternion fuseRotation;
     private GameObject currentFuse;
@@ -98,22 +101,27 @@ public class FuseboxTrigger : MonoBehaviour {
         if (acceptingFuseTag.Equals(currentFuse.tag)) {
             Accept();
         } else {
-            Decline();
+            StartCoroutine(Decline());
         }
     }
 
     private void Accept() {
         QuestManager.GetInstance().FuseFixed();
-        // Visual and/or auditive effect for the right fuse
+
+        // Auditive effect
+        currentSource.Play();
+
     }
 
-    private void Decline() {
+    private IEnumerator Decline() {
+        fuseBreak.Play();
+        yield return new WaitForSeconds(4);
         startParticles();
         // Visual and/or auditive effect for the wrong fuse. Block the fuse for some minutes...
     }
 
     private IEnumerator stopParticles() {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(56);
         gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 0;
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CircuitController : MonoBehaviour {
 
+    public AudioSource currentAudio;
+
     // Save all the cable tiles
     private Tile[,] tiles;
     private int numTilesRegistered = 0;
@@ -36,6 +38,7 @@ public class CircuitController : MonoBehaviour {
     public void Accept() {
         Debug.Log("You have found a solution!");
         QuestManager.GetInstance().CircuitFixed();
+        currentAudio.Play();
     }
 
     /**

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using HoloToolkit.Unity.InputModule;
 
 
@@ -9,7 +10,10 @@ using HoloToolkit.Unity.InputModule;
  * animations of the box.
  */
 public class BoxController : MonoBehaviour, IInputClickHandler {
-    
+
+    public AudioSource boxOpenAudioSource;
+    public AudioSource boxCloseAudioSource;
+
     private bool isOpened;
     private Animator anim;
 
@@ -42,6 +46,9 @@ public class BoxController : MonoBehaviour, IInputClickHandler {
         if (isOpened) { // If it's open close it
             // Start close animation
             anim.CrossFade("CloseBox", 0.5f);
+
+            // Play Audio feedback
+            boxCloseAudioSource.Play();
             
             // Update the collider to closed size
             mCollider.size = closeScale;
@@ -52,6 +59,9 @@ public class BoxController : MonoBehaviour, IInputClickHandler {
         } else {        // If it's closed open it
             // Start open animation
             anim.CrossFade("OpenBox", 0.5f);
+
+            // Play Audio feedback
+            boxOpenAudioSource.Play();
             
             // Update the collider to opened size
             mCollider.size = openScale;

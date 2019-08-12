@@ -14,6 +14,8 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
     public int y;
     public int rotation;
 
+    public AudioSource clickCableAudio;
+
     private GameObject breadboard;
 
     /**
@@ -35,8 +37,13 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
      */
     public void OnInputClicked(InputClickedEventData eventData)
     {
+        if (QuestManager.GetInstance().IsCircuitFixed() || QuestManager.GetInstance().getIsGameOver()) {
+            return;
+        }
+
         Debug.Log("Cable " + x + ", " + y + " was clicked. Turn 90 degrees");
         TurnCable();
+        clickCableAudio.Play();
         QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.ElectricCircuit);
     }
 

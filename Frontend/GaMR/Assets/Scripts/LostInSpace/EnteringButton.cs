@@ -16,6 +16,6 @@ public class EnteringButton : MonoBehaviour {
 	
 	
 	void OnClick () {
-        SceneManager.LoadScene("Lost_in_Space");
+        SceneManager.LoadScene("Lost_in_Space", LoadSceneMode.Additive);
 	}
 }

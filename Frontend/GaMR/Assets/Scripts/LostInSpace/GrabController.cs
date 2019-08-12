@@ -13,6 +13,9 @@ public class GrabController : MonoBehaviour, IInputClickHandler
     public bool isMoveable;         // Configures if the object is currently moveable
     public float grabbedDistance;   // Configures the distance of the object to the camera when grabbed
 
+    public AudioSource takeAudio;
+    public AudioSource placeAudio;
+
     private bool isGrabbed;         // Is the object currently grabbed
     private readonly float speed = 2.5f;
     
@@ -45,10 +48,14 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     public void OnInputClicked(InputClickedEventData eventData) {
         if (isGrabbed || !isMoveable) {
+            if (isGrabbed) {
+                placeAudio.Play();
+            }
             isGrabbed = false;
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
             isGrabbed = true;
+            takeAudio.Play();
         }
     }
 
@@ -57,6 +64,9 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     public void StopGrabbing() {
         isGrabbed = false;
+        if (placeAudio != null) {
+            placeAudio.Play();
+        }
     }
 
     /**
