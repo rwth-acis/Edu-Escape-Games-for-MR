@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class EnteringButton : MonoBehaviour {
 
+    public GameObject roomLoader;
+    public string scene;
     private Button button;
 
 	// Use this for initialization
@@ -16,6 +18,7 @@ public class EnteringButton : MonoBehaviour {
 	
 	
 	void OnClick () {
-        SceneManager.LoadScene("Lost_in_Space", LoadSceneMode.Additive);
+        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+        roomLoader.GetComponent<RoomLoader>().EnterRoom(this.gameObject);
 	}
 }
