@@ -540,9 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cef783d7b40f747bca2f525c5a1466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canavasForEachRoom:
+  objectsToDisable:
   - {fileID: 272119687}
   - {fileID: 1264248528}
+  - {fileID: 564196088}
 --- !u!1 &438567428
 GameObject:
   m_ObjectHideFlags: 0

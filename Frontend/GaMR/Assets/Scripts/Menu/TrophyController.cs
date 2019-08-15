@@ -14,7 +14,7 @@ public class TrophyController : MonoBehaviour, IFocusable, IInputClickHandler {
     
     void Start () {
         headsUpTag.transform.gameObject.SetActive(false);   // Disabled at the beginning
-        mrCamera = Camera.main;                             // Look at main camera
+        mrCamera = Camera.main;                             // Set look at object to main camera
 	}
 	
     /**
