@@ -18,6 +18,8 @@ public class FuseboxTrigger : MonoBehaviour {
     private GameObject currentFuse;
     private GameObject oldFuse;
 
+    private Material[] brokenTexture;
+
     private float lastPlaced = 0f;
 
 	/**
@@ -28,6 +30,8 @@ public class FuseboxTrigger : MonoBehaviour {
         fusePosition = currentFuse.transform.position;
         fuseRotation = currentFuse.transform.rotation;
         oldFuse = null;
+
+        brokenTexture = currentFuse.GetComponent<Renderer>().materials;
 	}
 	
 	/**
@@ -110,19 +114,18 @@ public class FuseboxTrigger : MonoBehaviour {
 
         // Auditive effect
         currentSource.Play();
-
     }
 
     private IEnumerator Decline() {
-        fuseBreak.Play();
+        fuseBreak.Play();                   // Auditory feedback
         yield return new WaitForSeconds(4);
-        startParticles();
-        // Visual and/or auditive effect for the wrong fuse. Block the fuse for some minutes...
+        startParticles();                   // Visual feedback
     }
 
     private IEnumerator stopParticles() {
         yield return new WaitForSeconds(56);
-        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 0;
+        currentFuse.GetComponent<Renderer>().materials = brokenTexture;     // Change current fuse's material to broken fuse
+        gameObject.GetComponentInParent<ParticleSystem>().emissionRate = 0; // Stop particle emission
     }
 
     private void startParticles() {

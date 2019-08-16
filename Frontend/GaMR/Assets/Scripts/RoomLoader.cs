@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RoomLoader : MonoBehaviour {
 
-    public GameObject[] canavasForEachRoom;
+    public GameObject[] objectsToDisable;
 
 	public void EnterRoom(GameObject gameObject) {
         DisableRoomCanavas();
     }
 
     private void DisableRoomCanavas() {
-        if (canavasForEachRoom != null) {
-            for (int i = 0; i < canavasForEachRoom.Length; i++) {
-                canavasForEachRoom[i].SetActive(false);
+        if (objectsToDisable != null) {
+            for (int i = 0; i < objectsToDisable.Length; i++) {
+                objectsToDisable[i].SetActive(false);
             }
         }
     }
