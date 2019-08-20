@@ -12,6 +12,7 @@ public class Introduction : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        introductionCanvas.transform.gameObject.SetActive(true);
 		for (int i = 0; i < introText.Length; i++) {
             StartCoroutine(DisplayText(introText[i], i * (0.5f + textShowTime), i == introText.Length - 1));
         }

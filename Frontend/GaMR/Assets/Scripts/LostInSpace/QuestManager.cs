@@ -167,6 +167,7 @@ public class QuestManager {
 
     public void GameOver() {
         Debug.Log("GameOver! You ran out of time.");
+        GameObject.FindGameObjectWithTag("GameOverSplash").GetComponent<GameOver>().Gameover();
     }
 
     public bool getIsGameOver() {
