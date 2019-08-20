@@ -27,7 +27,7 @@ public class OxygenUpdater : MonoBehaviour {
     }
 
     private void setOxygenLevel() {
-        float percentage = (Time.time / (float) timeLimitInSeconds);
+        float percentage = (QuestManager.GetInstance().getInGameTime() / (float) timeLimitInSeconds);
 
         if (percentage >= 1) {
             QuestManager.GetInstance().GameOver();

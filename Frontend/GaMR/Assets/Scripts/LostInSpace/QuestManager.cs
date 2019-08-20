@@ -71,7 +71,7 @@ public class QuestManager {
         }
     }
 
-    private float getInGameTime() {
+    public float getInGameTime() {
         return Time.time - gameStartTime;
     }
 
