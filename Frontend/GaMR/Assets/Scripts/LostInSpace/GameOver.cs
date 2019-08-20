@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
 
-    public Canvas gameoverCanvas;
+    public GameObject[] subElements;
     public float splashScreenShowTime;
 
+    void Start() {
+        for (int i = 0; i < subElements.Length; i++) {
+            subElements[i].SetActive(false);
+        }
+    }
+
     public void Gameover() {
-        gameoverCanvas.transform.gameObject.SetActive(true);
+        for (int i = 0; i < subElements.Length; i++) {
+            subElements[i].SetActive(true);
+        }
     }
 
     private IEnumerator deloadScene() {

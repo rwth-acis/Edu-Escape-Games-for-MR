@@ -1,15 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameDone : MonoBehaviour {
 
-    public Canvas gamedoneCanvas;
+    public GameObject[] subElements;
     public float splashScreenShowTime;
 
+    void Start() {
+        for (int i = 0; i < subElements.Length; i++) {
+            subElements[i].SetActive(false);
+        }
+    }
+
     public void Gamedone() {
-        gamedoneCanvas.transform.gameObject.SetActive(true);
+        for (int i = 0; i < subElements.Length; i++) {
+            subElements[i].SetActive(true);
+        }
     }
 
     private IEnumerator deloadScene() {

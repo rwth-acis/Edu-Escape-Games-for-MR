@@ -205,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &57261063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -295,7 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92942a95d13259947a5b610d259351fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverCanvas: {fileID: 57261066}
+  subElements:
+  - {fileID: 1454200269}
+  - {fileID: 752714362}
+  - {fileID: 1161775920}
   splashScreenShowTime: 10
 --- !u!1 &71343523
 GameObject:
@@ -1683,7 +1686,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2bf30de7b8d891b4da25b3bc32346b3b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2760,7 +2763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03f1a444979e2a48a3050ad92b413dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamedoneCanvas: {fileID: 839758077}
+  subElements:
+  - {fileID: 1742609901}
+  - {fileID: 566819022}
   splashScreenShowTime: 12
 --- !u!1 &861940531
 GameObject:
@@ -8113,7 +8118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1392704551
 RectTransform:
   m_ObjectHideFlags: 0
