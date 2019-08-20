@@ -172,4 +172,8 @@ public class QuestManager {
     public bool getIsGameOver() {
         return gameIsOver;
     }
+
+    public void startGame() {
+        gameStartTime = Time.time;
+    }
  }
