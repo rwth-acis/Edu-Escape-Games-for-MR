@@ -587,8 +587,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 175664022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.058038, y: 1.650522, z: -7.306816}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.6871, y: 1.2453, z: -0.48434}
+  m_LocalScale: {x: 0.14023393, y: 0.14023393, z: 0.14023393}
   m_Children:
   - {fileID: 471605949}
   - {fileID: 1179144454}
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoveable: 1
-  grabbedDistance: 7
+  grabbedDistance: 2
   takeAudio: {fileID: 1276806685}
   placeAudio: {fileID: 1340982587}
 --- !u!54 &438106546
@@ -2125,8 +2125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 555.6, y: 223.5}
+  m_AnchoredPosition: {x: -0.000011444092, y: 0}
+  m_SizeDelta: {x: 615.1, y: 223.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &671882811
 MonoBehaviour:
@@ -2160,7 +2160,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: When it comes to the landing the space shuttle crashed and you pass out.
+  m_Text: When it comes to the landing the space shuttle crashed and you passed out.
 --- !u!222 &671882812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2293,15 +2293,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.46186
+      value: -1.6509
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0350003
+      value: 1.2992
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.22
+      value: 1.4126
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2361,15 +2361,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.41596428
+      value: 0.058332305
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.41596425
+      value: 0.0583323
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.41596425
+      value: 0.05833236
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: df43856fafbee29488f1353485c31c8f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2478,15 +2478,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9252534
+      value: -2.9672
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.045
+      value: 1.3006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.5017605
+      value: 1.3119
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2514,15 +2514,15 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 97dc1c0070284334e8cafc08d29da7ee, type: 2}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.042070225
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.028046787
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.014023393
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd34ec6a2f26e0b41af59b452afd8ddf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoveable: 1
-  grabbedDistance: 7
+  grabbedDistance: 2
   takeAudio: {fileID: 2000386229}
   placeAudio: {fileID: 1840450815}
 --- !u!54 &896836770
@@ -3313,7 +3313,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -533826799
+  randomSeed: -1908147552
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6752,15 +6752,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.79
+      value: -1.0439
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: 0.85961
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.82
+      value: 1.3565
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6845,6 +6845,18 @@ Prefab:
     - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.14023393
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.14023393
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.14023407
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec3f4bcee0bab9f48a5cdf41710ef3a1, type: 3}
@@ -7846,15 +7858,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.475761
+      value: -2.0696
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9190317
+      value: 1.283
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.270744
+      value: 1.4197
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8267,6 +8279,18 @@ Prefab:
     - target: {fileID: 400020, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.14023393
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.14023393
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.14023393
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdd9663734ffd1b4fb0fe002672d5baf, type: 3}
@@ -9676,7 +9700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoveable: 1
-  grabbedDistance: 7
+  grabbedDistance: 2
   takeAudio: {fileID: 1671567951}
   placeAudio: {fileID: 937389266}
 --- !u!54 &1612208893
@@ -10381,8 +10405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 648.7, y: 223.5}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_SizeDelta: {x: 717.6, y: 223.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695663946
 MonoBehaviour:
@@ -10416,7 +10440,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A few hours later you wake up but you cannot remember what happend...
+  m_Text: A few hours later you wake up but you cannot remember what happend and who
+    you are...
 --- !u!222 &1695663947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10793,7 +10818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8afc40dadd03a4459c78dcf7280ddc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtDistance: 2.5
+  lookAtDistance: 1
   speed: 2
   takeAudio: {fileID: 2137931184}
   putAudio: {fileID: 2078399773}
@@ -10859,7 +10884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
