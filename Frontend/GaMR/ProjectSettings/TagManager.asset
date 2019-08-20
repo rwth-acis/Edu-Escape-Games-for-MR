@@ -11,6 +11,7 @@ TagManager:
   - Breadboard
   - ComputerDisplay
   - HintDisplay
+  - GameOverSplash
   layers:
   - Default
   - TransparentFX

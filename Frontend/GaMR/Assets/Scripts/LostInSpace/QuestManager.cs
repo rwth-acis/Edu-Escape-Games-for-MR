@@ -139,6 +139,7 @@ public class QuestManager {
     public void EngineStarted() {
         questsSolved[Quest.Voltage] = true;
         Debug.Log("Congratulations, you won the game!");
+        GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
     }
 
     /**
