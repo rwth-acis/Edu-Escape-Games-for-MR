@@ -7,6 +7,8 @@ public class QuestManager {
     // Singleton instance
     private static QuestManager instance;
 
+    private float gameStartTime = 0f;
+
     // HintsManager for pushing hints to the user
     private HintsManager hintsManager;
     private Dictionary<Quest, Hints.Hint[]> hints;
@@ -57,20 +59,24 @@ public class QuestManager {
         if (currentQuest != quest) {
             QuestInfo currentQuestInfo = questInformation[currentQuest];
 
-            if (Time.time > 30) {
-                currentQuestInfo.timeSpent += Time.time - timeStartedQuest;
+            if (getInGameTime() > 30) {
+                currentQuestInfo.timeSpent += getInGameTime() - timeStartedQuest;
             }
 
             Debug.Log("Stopped working on quest " + currentQuest + ". Total time: " + currentQuestInfo.timeSpent + ", hints shown: " + currentQuestInfo.hintsShown);
             Debug.Log("Now working on quest " + quest);
 
             currentQuest = quest;
-            timeStartedQuest = Time.time;
+            timeStartedQuest = getInGameTime();
         }
     }
 
+    private float getInGameTime() {
+        return Time.time - gameStartTime;
+    }
+
     public void checkDisplayHints() {
-        if (Time.time - lastDisplayedHintTime < 10f || !hints.ContainsKey(currentQuest)) {
+        if (getInGameTime() - lastDisplayedHintTime < 10f || !hints.ContainsKey(currentQuest)) {
             // Do not show a hint within the next 10 seconds
             return;
         }
@@ -78,7 +84,7 @@ public class QuestManager {
 
         Quest checkQuest = currentQuest;
         QuestInfo checkInfo = questInformation[checkQuest];
-        float currentTime = Time.time - timeStartedQuest;
+        float currentTime = getInGameTime() - timeStartedQuest;
 
         float timeWorkedOn = checkInfo.timeSpent + currentTime;
         int hintLevel = (int)(timeWorkedOn / 60);
