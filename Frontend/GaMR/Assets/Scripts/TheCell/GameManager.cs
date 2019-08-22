@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour {
     private enum CellMode {
         Nucleus, Membrane, Other
     }
+
+    private float gameSartTime = 0f;
+    public Text display;
+    public float timeLimit;
 
 	// Use this for initialization
 	void Start () {
@@ -52,6 +57,8 @@ public class GameManager : MonoBehaviour {
                 nucleus.transform.position = Vector3.Lerp(nucleus.transform.position, nucleusStartPosition, Time.deltaTime);
             }
         }
+
+        updateTimeDisplay();
 	}
 
     public void nucleusDone() {
@@ -59,6 +66,33 @@ public class GameManager : MonoBehaviour {
     }
 
     public void cellOrganesDone() {
-        //currentMode
+        currentMode = CellMode.Membrane;
+    }
+
+    public void setStartTime() {
+        gameSartTime = Time.time;
+    }
+
+    private void updateTimeDisplay() {
+        float inGameTime = Time.time - gameSartTime;
+        float timeLeft = timeLimit - inGameTime;
+        int minutes = (int) timeLeft / 60;
+        int seconds = (int) timeLeft % 60;
+
+        display.text = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        if (timeLeft <= 0) {
+            GameOver();
+        }
+    }
+
+    private void GameOver() {
+        Debug.Log("GameOver! You ran out of time.");
+        GameObject.FindGameObjectWithTag("GameOverSplash").GetComponent<GameOver>().Gameover();
+    }
+
+    private void GameDone() {
+        Debug.Log("Congratulations, you won the game!");
+        GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
     }
 }

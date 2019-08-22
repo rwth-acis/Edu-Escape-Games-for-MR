@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Introduction : MonoBehaviour {
 
+    public GameObject gameManager;
+
     public Canvas introductionCanvas;
     public Text[] introText;
 
@@ -12,15 +14,11 @@ public class Introduction : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("Intro started");
         introductionCanvas.transform.gameObject.SetActive(true);
 		for (int i = 0; i < introText.Length; i++) {
             StartCoroutine(DisplayText(introText[i], i * (0.5f + textShowTime), i == introText.Length - 1));
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     private IEnumerator DisplayText(Text text, float delay, bool isLast) {
@@ -34,7 +32,11 @@ public class Introduction : MonoBehaviour {
         text.transform.gameObject.SetActive(false);
         if (isLast) {
             introductionCanvas.transform.gameObject.SetActive(false);
-            QuestManager.GetInstance().startGame();
+            if (gameManager == null) {
+                QuestManager.GetInstance().startGame();
+            } else {
+                gameManager.GetComponent<GameManager>().setStartTime();
+            }
         }
     }
 }
