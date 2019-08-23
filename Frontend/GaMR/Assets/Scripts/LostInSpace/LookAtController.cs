@@ -62,13 +62,21 @@ public class LookAtController : MonoBehaviour, IInputClickHandler {
         if (lookingAt) {
             lookingAt = false;
             flowAwayAnimationFrame = 0;
-            putAudio.Play();
+            if (putAudio != null) {
+                putAudio.Play();
+            }
             Debug.Log("Put look at object away");
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.Document);
             lookingAt = true;
-            takeAudio.Play();
+            if (takeAudio != null) {
+                takeAudio.Play();
+            }
             Debug.Log("Look at object");
         }
+    }
+
+    public bool IsLookingAt() {
+        return lookingAt;
     }
 }

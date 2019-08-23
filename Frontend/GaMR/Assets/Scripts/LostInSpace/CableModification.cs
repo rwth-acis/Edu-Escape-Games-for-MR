@@ -35,15 +35,16 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
     /**
      * Is called when this tile is clicked.
      */
-    public void OnInputClicked(InputClickedEventData eventData)
-    {
+    public void OnInputClicked(InputClickedEventData eventData) {
         if (QuestManager.GetInstance().IsCircuitFixed() || QuestManager.GetInstance().getIsGameOver()) {
             return;
         }
 
         Debug.Log("Cable " + x + ", " + y + " was clicked. Turn 90 degrees");
         TurnCable();
-        clickCableAudio.Play();
+        if (clickCableAudio != null) {
+            clickCableAudio.Play();
+        }
         QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.ElectricCircuit);
     }
 
@@ -53,6 +54,12 @@ public class CableModification : MonoBehaviour, IInputClickHandler {
     private void TurnCable() {
         this.transform.Rotate(0, 0, 90, Space.Self);    // 90 degrees in z axis and local space!
         rotation = (rotation + 90) % 360;
-        breadboard.GetComponent<CircuitController>().TurnTile(x, y, rotation);
+        if (breadboard != null) {
+            breadboard.GetComponent<CircuitController>().TurnTile(x, y, rotation);
+        }
+    }
+
+    public int getRotation() {
+        return rotation;
     }
 }

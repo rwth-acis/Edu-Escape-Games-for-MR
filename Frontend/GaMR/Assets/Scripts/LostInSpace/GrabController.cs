@@ -48,14 +48,16 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     public void OnInputClicked(InputClickedEventData eventData) {
         if (isGrabbed || !isMoveable) {
-            if (isGrabbed) {
+            if (isGrabbed && placeAudio != null) {
                 placeAudio.Play();
             }
             isGrabbed = false;
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
             isGrabbed = true;
-            takeAudio.Play();
+            if (takeAudio != null) {
+                takeAudio.Play();
+            }
         }
     }
 
@@ -74,5 +76,9 @@ public class GrabController : MonoBehaviour, IInputClickHandler
      */
     public void SetMoveable(bool isMoveable) {
         this.isMoveable = isMoveable;
+    }
+
+    public bool IsGrabbed() {
+        return isGrabbed;
     }
 }
