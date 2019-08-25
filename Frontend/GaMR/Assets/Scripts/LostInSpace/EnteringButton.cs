@@ -8,6 +8,8 @@ public class EnteringButton : MonoBehaviour {
 
     public GameObject roomLoader;
     public string scene;
+    public RoomLoader.Room room;
+
     private Button button;
 
 	// Use this for initialization
@@ -19,6 +21,6 @@ public class EnteringButton : MonoBehaviour {
 	
 	void OnClick () {
         SceneManager.LoadScene(scene, LoadSceneMode.Additive);
-        roomLoader.GetComponent<RoomLoader>().EnterRoom(this.gameObject);
+        roomLoader.GetComponent<RoomLoader>().EnterRoom(room);
 	}
 }

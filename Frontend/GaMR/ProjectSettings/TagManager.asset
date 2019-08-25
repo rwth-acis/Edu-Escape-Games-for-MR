@@ -13,6 +13,7 @@ TagManager:
   - HintDisplay
   - GameOverSplash
   - GameDoneSplash
+  - SpaceCollection
   layers:
   - Default
   - TransparentFX

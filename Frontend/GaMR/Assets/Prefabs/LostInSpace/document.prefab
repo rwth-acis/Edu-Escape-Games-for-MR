@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1401784356183142
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,12 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0647d09809c6843b2f7fc533edfe46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlaceableBoundsMaterial: {fileID: 0}
-  NotPlaceableBoundsMaterial: {fileID: 0}
-  PlaceableShadowMaterial: {fileID: 0}
-  NotPlaceableShadowMaterial: {fileID: 0}
   PlacementSurface: 2
-  ChildrenToHide: []
 --- !u!114 &114960914606855186
 MonoBehaviour:
   m_ObjectHideFlags: 1

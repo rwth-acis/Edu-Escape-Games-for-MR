@@ -6,8 +6,16 @@ public class RoomLoader : MonoBehaviour {
 
     public GameObject[] objectsToDisable;
 
-	public void EnterRoom(GameObject gameObject) {
+    public enum Room {
+        LostInSpace, TheCell
+    }
+
+	public void EnterRoom(Room room) {
         DisableRoomCanavas();
+        if (room == Room.LostInSpace) {
+            Debug.Log("Enable Space collection");
+            GameObject.FindGameObjectWithTag("SpaceCollection").GetComponent<SpaceCollectionManager>().EnableChildren();
+        }
     }
 
     private void DisableRoomCanavas() {

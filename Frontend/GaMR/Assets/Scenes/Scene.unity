@@ -725,6 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 421644649}
   scene: Lost_in_Space
+  room: 0
 --- !u!1 &501829635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomLoader: {fileID: 421644649}
   scene: The_Cell
+  room: 1
 --- !u!114 &2060826994
 MonoBehaviour:
   m_ObjectHideFlags: 0

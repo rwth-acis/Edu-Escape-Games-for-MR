@@ -55,7 +55,14 @@ public class GrabController : MonoBehaviour, IInputClickHandler
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
             isGrabbed = true;
-            transform.parent = null;
+
+            if (transform.parent != null) {
+                GameObject parent = transform.parent.gameObject;
+                transform.parent = null;
+                parent.SetActive(false);
+                parent.SetActive(true);
+            }
+
             if (takeAudio != null) {
                 takeAudio.Play();
             }

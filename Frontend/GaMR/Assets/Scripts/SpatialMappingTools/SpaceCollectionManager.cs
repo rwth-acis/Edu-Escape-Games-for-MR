@@ -15,6 +15,11 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
 
     Dictionary<int, int> planeTimesUsed;
 
+    private List<GameObject> horizontalObjects;
+    private List<GameObject> verticalObjects;
+    private List<GameObject> horizontalSurfaces;
+    private List<GameObject> verticalSurfaces;
+
     /// <summary>
     /// Generates a collection of Placeable objects in the world and sets them on planes that match their affinity.
     /// </summary>
@@ -22,8 +27,10 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
     /// <param name="verticalSurfaces">Vertical surface planes (walls).</param>
     public void GenerateItemsInWorld(List<GameObject> horizontalSurfaces, List<GameObject> verticalSurfaces)
     {
-        List<GameObject> horizontalObjects = new List<GameObject>();
-        List<GameObject> verticalObjects = new List<GameObject>();
+        horizontalObjects = new List<GameObject>();
+        verticalObjects = new List<GameObject>();
+        this.horizontalSurfaces = horizontalSurfaces;
+        this.verticalSurfaces = verticalSurfaces;
 
         foreach (GameObject spacePrefab in spaceObjectPrefabs)
         {
@@ -37,16 +44,30 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
                 verticalObjects.Add(spacePrefab);
             }
         }
+        generateSpaceItems();
+        DisableChildren();
+    }
 
+    public void DisableChildren() {
+        for (int i = 0; i < transform.childCount; ++i) {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    public void EnableChildren() {
+        for (int i = 0; i < transform.childCount; ++i) {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    public void generateSpaceItems() {
         Debug.Log("Start genearting items");
 
-        if (horizontalObjects.Count > 0)
-        {
+        if (horizontalObjects.Count > 0) {
             CreateSpaceObjects(horizontalObjects, horizontalSurfaces, PlacementSurfaces.Horizontal);
         }
 
-        if (verticalObjects.Count > 0)
-        {
+        if (verticalObjects.Count > 0) {
             CreateSpaceObjects(verticalObjects, verticalSurfaces, PlacementSurfaces.Vertical);
         }
     }
