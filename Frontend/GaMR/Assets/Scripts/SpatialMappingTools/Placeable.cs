@@ -96,7 +96,7 @@ public class Placeable : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        targetPosition = gameObject.transform.position;
+        /*targetPosition = gameObject.transform.position;
 
         // Get the object's collider.
         boxCollider = gameObject.GetComponent<BoxCollider>();
@@ -117,7 +117,7 @@ public class Placeable : MonoBehaviour
         // Create a object that will be used as a shadow.
         shadowAsset = GameObject.CreatePrimitive(PrimitiveType.Quad);
         shadowAsset.transform.parent = gameObject.transform;
-        shadowAsset.SetActive(false);
+        shadowAsset.SetActive(false);*/
     }
 
     /// <summary>
@@ -128,14 +128,14 @@ public class Placeable : MonoBehaviour
     {
         /* TODO: 4.a CODE ALONG 4.a */
 
-        if (!IsPlacing)
+        /*if (!IsPlacing)
         {
             OnPlacementStart();
         }
         else
         {
             OnPlacementStop();
-        }
+        }*/
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class Placeable : MonoBehaviour
     {
         /* TODO: 4.a CODE ALONG 4.a */
 
-        if (IsPlacing)
+        /*if (IsPlacing)
         {
             // Move the object.
             Move();
@@ -177,7 +177,7 @@ public class Placeable : MonoBehaviour
                     ChildrenToHide[i].SetActive(true);
                 }
             }
-        }
+        }*/
     }
 
     /// <summary>
@@ -313,7 +313,7 @@ public class Placeable : MonoBehaviour
     /// </summary>
     public void OnPlacementStart()
     {
-        // If we are managing the collider, enable it. 
+        /*// If we are managing the collider, enable it. 
         if (managingBoxCollider)
         {
             boxCollider.enabled = true;
@@ -330,7 +330,7 @@ public class Placeable : MonoBehaviour
         GestureManager.Instance.OverrideFocusedObject = gameObject;
 
         // Enter placement mode.
-        IsPlacing = true;
+        IsPlacing = true;*/
     }
 
     /// <summary>
@@ -343,7 +343,7 @@ public class Placeable : MonoBehaviour
     /// </remarks>
     public void OnPlacementStop()
     {
-        // ValidatePlacement requires a normal as an out parameter.
+        /*// ValidatePlacement requires a normal as an out parameter.
         Vector3 position;
         Vector3 surfaceNormal;
 
@@ -370,7 +370,7 @@ public class Placeable : MonoBehaviour
         GestureManager.Instance.OverrideFocusedObject = null;
 
         // Exit placement mode.
-        IsPlacing = false;
+        IsPlacing = false;*/
     }
 
     /// <summary>

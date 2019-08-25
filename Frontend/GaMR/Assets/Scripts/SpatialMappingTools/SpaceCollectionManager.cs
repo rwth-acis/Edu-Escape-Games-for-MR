@@ -13,6 +13,8 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
     [Tooltip("A collection of Placeable space object prefabs to generate in the world.")]
     public List<GameObject> spaceObjectPrefabs;
 
+    Dictionary<int, int> planeTimesUsed;
+
     /// <summary>
     /// Generates a collection of Placeable objects in the world and sets them on planes that match their affinity.
     /// </summary>
@@ -58,6 +60,12 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
     private void CreateSpaceObjects(List<GameObject> spaceObjects, List<GameObject> surfaces, PlacementSurfaces surfaceType)
     {
         List<int> UsedPlanes = new List<int>();
+        bool missingPlanes = spaceObjects.Count > surfaces.Count;
+        planeTimesUsed = new Dictionary<int, int>();
+
+        for (int i = 0; i < surfaces.Count; i++) {
+            planeTimesUsed.Add(i, 0);
+        }
 
         // Sort the planes by distance to user.
         surfaces.Sort((lhs, rhs) =>
@@ -100,7 +108,19 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
                 GameObject surface = surfaces[index];
                 SurfacePlane plane = surface.GetComponent<SurfacePlane>();
                 position = surface.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
+
+                planeTimesUsed[index]++;
+                if (missingPlanes) {
+                    if (planeTimesUsed[index] == 2) {
+                        position = position - Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
+                    }
+                    else if (planeTimesUsed[index] == 3) {
+                        position = position + Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
+                    }
+                }
+
                 position = AdjustPositionWithSpatialMap(position, plane.SurfaceNormal);
+                
                 rotation = Camera.main.transform.localRotation;
 
                 if (surfaceType == PlacementSurfaces.Vertical)
@@ -155,6 +175,11 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
             }
 
             return i;
+        }
+
+        if (planeIndex == -1) {
+            Debug.Log("There is no plane left.");
+            return 1;
         }
 
         return planeIndex;

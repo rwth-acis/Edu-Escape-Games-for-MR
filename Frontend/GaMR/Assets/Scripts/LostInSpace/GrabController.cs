@@ -16,7 +16,7 @@ public class GrabController : MonoBehaviour, IInputClickHandler
     public AudioSource takeAudio;
     public AudioSource placeAudio;
 
-    private bool isGrabbed;         // Is the object currently grabbed
+    public bool isGrabbed;         // Is the object currently grabbed
     private readonly float speed = 2.5f;
     
     /**
@@ -55,6 +55,7 @@ public class GrabController : MonoBehaviour, IInputClickHandler
         } else {
             QuestManager.GetInstance().currentlyWorkingOn(QuestManager.Quest.BrokenFuse);
             isGrabbed = true;
+            transform.parent = null;
             if (takeAudio != null) {
                 takeAudio.Play();
             }
