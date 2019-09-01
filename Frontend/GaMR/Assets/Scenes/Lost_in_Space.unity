@@ -225,6 +225,12 @@ MonoBehaviour:
   - {fileID: 1454200269}
   - {fileID: 752714362}
   - {fileID: 1161775920}
+  toDestroyOnEnd:
+  - {fileID: 2025700384}
+  - {fileID: 583870306}
+  - {fileID: 410690886}
+  - {fileID: 1057530079}
+  isLostInSpace: 1
   splashScreenShowTime: 10
 --- !u!1 &400259451
 GameObject:
@@ -312,7 +318,7 @@ GameObject:
   - component: {fileID: 410690887}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: LostInSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +711,7 @@ GameObject:
   - component: {fileID: 583870307}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: LostInSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1168,6 +1174,12 @@ MonoBehaviour:
   subElements:
   - {fileID: 1742609901}
   - {fileID: 566819022}
+  toDestroyOnEnd:
+  - {fileID: 2025700384}
+  - {fileID: 583870306}
+  - {fileID: 410690886}
+  - {fileID: 1057530079}
+  isLostInSpace: 1
   splashScreenShowTime: 12
 --- !u!1 &861940531
 GameObject:
@@ -1398,7 +1410,7 @@ GameObject:
   - component: {fileID: 1057530080}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: LostInSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2592,6 +2604,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012072213228, guid: a611e772ef8ddf64d8106a9cbb70f31c, type: 2}
+      propertyPath: m_TagString
+      value: LostInSpace
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a611e772ef8ddf64d8106a9cbb70f31c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2025700384 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012072213228, guid: a611e772ef8ddf64d8106a9cbb70f31c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2025700383}

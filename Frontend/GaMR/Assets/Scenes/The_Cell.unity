@@ -245,6 +245,8 @@ GameObject:
   - component: {fileID: 125977151}
   - component: {fileID: 125977153}
   - component: {fileID: 125977152}
+  - component: {fileID: 125977155}
+  - component: {fileID: 125977154}
   m_Layer: 0
   m_Name: nucleus
   m_TagString: Untagged
@@ -312,6 +314,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 125977150}
   m_Mesh: {fileID: 4300002, guid: 8d6481b628bf9e143a41f9c84624ddb9, type: 3}
+--- !u!114 &125977154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 125977150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9754873625da7840a5350a7c813c9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &125977155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 125977150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.661023, y: 12.691432, z: 12.027555}
+  m_Center: {x: 0.09570671, y: 0.13724087, z: 0.17880702}
 --- !u!1 &155676230
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +537,17 @@ MonoBehaviour:
   subElements:
   - {fileID: 1329831493}
   - {fileID: 155676230}
+  toDestroyOnEnd:
+  - {fileID: 1016555592}
+  - {fileID: 1471333110}
+  - {fileID: 1141171344}
+  - {fileID: 1862586238}
+  - {fileID: 497592142}
+  - {fileID: 871885393}
+  - {fileID: 4002893}
+  - {fileID: 2124051962}
+  - {fileID: 1709203817}
+  isLostInSpace: 0
   splashScreenShowTime: 12
 --- !u!114 &195374559
 MonoBehaviour:
@@ -1031,6 +1067,17 @@ MonoBehaviour:
   - {fileID: 214799427}
   - {fileID: 1605343301}
   - {fileID: 1839791848}
+  toDestroyOnEnd:
+  - {fileID: 1016555592}
+  - {fileID: 1471333110}
+  - {fileID: 1141171344}
+  - {fileID: 1862586238}
+  - {fileID: 497592142}
+  - {fileID: 871885393}
+  - {fileID: 4002893}
+  - {fileID: 2124051962}
+  - {fileID: 1709203817}
+  isLostInSpace: 0
   splashScreenShowTime: 10
 --- !u!114 &782533582
 MonoBehaviour:
@@ -1700,6 +1747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1471333112}
   - component: {fileID: 1471333111}
+  - component: {fileID: 1471333113}
   m_Layer: 0
   m_Name: nucleus_particles_applied
   m_TagString: Untagged
@@ -1739,6 +1787,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1471333113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1471333110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce4fe9c123267a4f8cd01ca6bdbdc90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1575834451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1862586239
 Animator:
   serializedVersion: 3

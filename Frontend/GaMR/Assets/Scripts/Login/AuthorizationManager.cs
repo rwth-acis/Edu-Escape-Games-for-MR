@@ -79,6 +79,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
 
     private void StartedByProtocol(Uri uri)
     {
+        Debug.Log("Started by protocol");
         if (uri.Fragment != null)
         {
             char[] splitters = { '?', '&' };
@@ -116,6 +117,8 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
                 }
             }
 
+        } else {
+            Debug.Log("Uri fragment empty");
         }
     }
 
