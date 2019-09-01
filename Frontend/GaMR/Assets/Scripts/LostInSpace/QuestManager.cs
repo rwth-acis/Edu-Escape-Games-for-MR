@@ -7,6 +7,8 @@ public class QuestManager {
     // Singleton instance
     private static QuestManager instance;
 
+    public static readonly string GAME_ID = "LOST_IN_SPACE";
+
     private float gameStartTime = 0f;
 
     // HintsManager for pushing hints to the user
@@ -53,6 +55,8 @@ public class QuestManager {
         questsSolved.Add(Quest.None, false);
 
         hints = Hints.getHints();
+
+        CreateGame();       // Create Game in Gamification Database
     }
 
     public void currentlyWorkingOn(Quest quest) {
@@ -117,6 +121,7 @@ public class QuestManager {
         questsSolved[Quest.BrokenFuse] = true;
         Debug.Log("Quest solved: Broken fuse");
         CheckComputerBoot();
+        CreateQuest("BROKEN_FUSE", "Broken Fuse", "The player has to fix the broken fuse by replacing it with a new fuse. The maximum current needs to be calculated.");
     }
 
     /**
@@ -126,11 +131,13 @@ public class QuestManager {
         questsSolved[Quest.ElectricCircuit] = true;
         Debug.Log("Quest solved: Electric Circuit");
         CheckComputerBoot();
+        CreateQuest("ELECTRIC_CIRCUIT", "Electric Circuit", "The player hast to recreate an electric circuit to match the labeled outputs.");
     }
 
     public void ComputerLogin() {
         questsSolved[Quest.ComputerPassword] = true;
         Debug.Log("Quest solved: Computer Password");
+        CreateQuest("COMPUTER_LOGIN", "Computer Login", "The player hast to find out the password und log in.");
     }
 
     /**
@@ -140,6 +147,7 @@ public class QuestManager {
         questsSolved[Quest.Voltage] = true;
         Debug.Log("Congratulations, you won the game!");
         GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
+        CreateQuest("ENGINE_START", "Engine start", "The player has to calculate the voltage needed to charge the capacitor to the right charge amount.");
     }
 
     /**
@@ -177,5 +185,28 @@ public class QuestManager {
 
     public void startGame() {
         gameStartTime = Time.time;
+    }
+
+    public void CreateGame() {
+        Game game = new Game(GAME_ID, "Lost in Space, Educational Mixed Reality Escape Game. For learning of physics of electricity");
+        GamificationFramework.Instance.CreateGame(game, (game1, code) => {
+            if (game1 != null) {
+                Debug.Log("Game with ID " + game1.ID + " was setup in Gamification Framework");
+            }
+        });
+        GamificationFramework.Instance.AddUserToGame(GAME_ID, code => {
+            Debug.Log("Response code for adding user to game: " + code);
+        });
+    }
+
+    public void CreateQuest(string ID, string name, string description) {
+        global::Quest quest = new global::Quest(ID, name, QuestStatus.REVEALED, ID, false, false, 1, description);
+        GamificationFramework.Instance.CreateQuest(GAME_ID, quest, (quest1, code) => {});
+    }
+
+    public void CreateAchievement() {
+        Achievement achievement = new Achievement(GAME_ID + "_ACHIEVEMENT", "Escape from Lost in Space", "The player completed the Lost in Space Escape Game.", 10, GAME_ID + "_BADGE");
+        GamificationFramework.Instance.CreateAchievement(GAME_ID, achievement, (achievement1, code) => {
+        });
     }
  }
