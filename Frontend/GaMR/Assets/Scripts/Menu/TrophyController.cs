@@ -9,8 +9,12 @@ public class TrophyController : MonoBehaviour, IFocusable, IInputClickHandler {
     // Plug in the heads up UI tag here
     public Canvas headsUpTag;
 
+    public GameObject lostInSpaceBadge;
+    public GameObject theCellBadge;
+
     // Camera object the UI tag should follow
     private Camera mrCamera;
+    private bool trophyRoomOpened;
     
     void Start () {
         headsUpTag.transform.gameObject.SetActive(false);   // Disabled at the beginning
@@ -43,6 +47,18 @@ public class TrophyController : MonoBehaviour, IFocusable, IInputClickHandler {
     }
 
     public void OnInputClicked(InputClickedEventData eventData) {
-        throw new System.NotImplementedException();
+        if (trophyRoomOpened) {
+            lostInSpaceBadge.SetActive(false);
+            theCellBadge.SetActive(false);
+            trophyRoomOpened = false;
+        } else {
+            if (PlayerPrefs.GetInt("LOST_IN_SPACE_BADGE", 0) == 1) {
+                lostInSpaceBadge.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("THE_CELL_BADGE", 0) == 1) {
+                theCellBadge.SetActive(true);
+            }
+            trophyRoomOpened = true;
+        }
     }
 }

@@ -33,6 +33,8 @@ public class QuestManager {
     private Dictionary<Quest, bool> questsSolved;
     private bool gameIsOver = false;
 
+    private bool StoreGamificationData = false;
+
     /**
      * Creates a new QuestManager. Therefore the HintsManager (attached to the HintDisplay)
      * is needed.
@@ -56,7 +58,9 @@ public class QuestManager {
 
         hints = Hints.getHints();
 
-        CreateGame();       // Create Game in Gamification Database
+        if (StoreGamificationData) {
+            CreateGame();       // Create Game in Gamification Database
+        }
     }
 
     public void currentlyWorkingOn(Quest quest) {
@@ -148,6 +152,7 @@ public class QuestManager {
         Debug.Log("Congratulations, you won the game!");
         GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
         CreateQuest("ENGINE_START", "Engine start", "The player has to calculate the voltage needed to charge the capacitor to the right charge amount.");
+        PlayerPrefs.SetInt("LOST_IN_SPACE_BADGE", 1);
     }
 
     /**
@@ -200,8 +205,10 @@ public class QuestManager {
     }
 
     public void CreateQuest(string ID, string name, string description) {
-        global::Quest quest = new global::Quest(ID, name, QuestStatus.REVEALED, ID, false, false, 1, description);
-        GamificationFramework.Instance.CreateQuest(GAME_ID, quest, (quest1, code) => {});
+        if (StoreGamificationData) {
+            global::Quest quest = new global::Quest(ID, name, QuestStatus.REVEALED, ID, false, false, 1, description);
+            GamificationFramework.Instance.CreateQuest(GAME_ID, quest, (quest1, code) => { });
+        }
     }
 
     public void CreateAchievement() {
