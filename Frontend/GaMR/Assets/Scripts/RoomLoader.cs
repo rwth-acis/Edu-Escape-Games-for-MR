@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomLoader : MonoBehaviour {
 
     public GameObject[] objectsToDisable;
+    public GameObject trophy;
 
     public enum Room {
         LostInSpace, TheCell
@@ -20,6 +21,7 @@ public class RoomLoader : MonoBehaviour {
             Debug.Log("Enable Space collection");
             GameObject.FindGameObjectWithTag("SpaceCollection").GetComponent<SpaceCollectionManager>().EnableChildren();
         }
+        trophy.GetComponent<TrophyController>().CloseTrophyRoom();
     }
 
     public void DisableRoomCanvas() {

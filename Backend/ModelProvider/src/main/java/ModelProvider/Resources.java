@@ -87,7 +87,7 @@ public class Resources {
     }
 
     @GET
-   @Path("/model/{name}/thumbnail")
+    @Path("/model/{name}/thumbnail")
     @Produces("image/png")
     public Response getThumbnail(@PathParam("name") String modelName, @HeaderParam("access_token") String accessToken)
     {

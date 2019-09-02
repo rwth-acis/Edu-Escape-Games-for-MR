@@ -86,7 +86,11 @@ public class RestManager : Singleton<RestManager>
     {
         if (passOnArgs != null && passOnArgs.Length > 0)
         {
-            ((Action<UnityWebRequest>)passOnArgs[0])(req);
+            try {
+                ((Action<UnityWebRequest>)passOnArgs[0])(req);
+            } catch (Exception e) {
+                Debug.Log("Failed reducing callback: " + e.Message);
+            }
         }
     }
 

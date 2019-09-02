@@ -91,6 +91,7 @@ public class TapNotifier : MonoBehaviour, IInputHandler
         if (inputDownEvent != null)
         {
             inputDownEvent.Invoke();
+            Debug.Log("Invoke input down event");
         }
     }
 
@@ -103,6 +104,7 @@ public class TapNotifier : MonoBehaviour, IInputHandler
         if (inputUpEvent != null)
         {
             inputUpEvent.Invoke();
+            Debug.Log("Invoke input up event");
         }
     }
 }

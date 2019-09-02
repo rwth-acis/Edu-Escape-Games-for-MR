@@ -61,4 +61,12 @@ public class TrophyController : MonoBehaviour, IFocusable, IInputClickHandler {
             trophyRoomOpened = true;
         }
     }
+
+    public void CloseTrophyRoom() {
+        if (trophyRoomOpened) {
+            lostInSpaceBadge.SetActive(false);
+            theCellBadge.SetActive(false);
+            trophyRoomOpened = false;
+        }
+    }
 }

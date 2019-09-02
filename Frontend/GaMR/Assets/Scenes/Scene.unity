@@ -544,6 +544,7 @@ MonoBehaviour:
   - {fileID: 272119687}
   - {fileID: 1264248528}
   - {fileID: 564196088}
+  trophy: {fileID: 564196088}
 --- !u!1 &438567428
 GameObject:
   m_ObjectHideFlags: 0

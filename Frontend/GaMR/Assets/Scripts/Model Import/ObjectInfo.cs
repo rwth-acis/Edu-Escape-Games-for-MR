@@ -10,10 +10,7 @@ public class ObjectInfo : MonoBehaviour {
     /// <summary>
     /// The name of the 3D model
     /// </summary>
-    public string ModelName
-    {
-        get;set;
-    }
+    public string ModelName;
 
     public Vector3 Size
     {

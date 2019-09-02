@@ -77,6 +77,7 @@ public class AttachementManager : MonoBehaviour
         {
             manager = gameObject.AddComponent<AnnotationManager>();
             IsQuiz = false;
+            Debug.Log("Create new AnnotationManager");
         }
         RegisterOnNotifiers();
         return manager;
