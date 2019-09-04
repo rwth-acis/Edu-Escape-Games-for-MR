@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="modelprovider" default="all">
+  
+  
+  <property file="modelprovider.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.8.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.8.0/jackson-annotations-2.8.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.8.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.8.11.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.8.11.1/jackson-databind-2.8.11.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.annotation:javax.annotation-api:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:1.1.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/ws/rs/javax.ws.rs-api/2.0/javax.ws.rs-api-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-continuation:9.1.1.v20140108.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-continuation/9.1.1.v20140108/jetty-continuation-9.1.1.v20140108.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-http:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-http/9.3.25.v20180904/jetty-http-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-io:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-io/9.3.25.v20180904/jetty-io-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-security:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-security/9.3.25.v20180904/jetty-security-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-server:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-server/9.3.25.v20180904/jetty-server-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-servlet:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-servlet/9.3.25.v20180904/jetty-servlet-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-util:9.3.25.v20180904.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-util/9.3.25.v20180904/jetty-util-9.3.25.v20180904.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.0/org.eclipse.persistence.antlr-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.persistence:org.eclipse.persistence.asm:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.0/org.eclipse.persistence.asm-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.persistence:org.eclipse.persistence.core:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.core/2.5.0/org.eclipse.persistence.core-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.moxy/2.5.0/org.eclipse.persistence.moxy-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2.external:aopalliance-repackaged:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/external/aopalliance-repackaged/2.2.0/aopalliance-repackaged-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2.external:javax.inject:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/external/javax.inject/2.2.0/javax.inject-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2:hk2-api:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/hk2-api/2.2.0/hk2-api-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2:hk2-locator:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/hk2-locator/2.2.0/hk2-locator-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2:hk2-utils:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/hk2-utils/2.2.0/hk2-utils-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.7/jersey-guava-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.containers:jersey-container-jetty-http:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/containers/jersey-container-jetty-http/2.7/jersey-container-jetty-http-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/containers/jersey-container-servlet-core/2.7/jersey-container-servlet-core-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.core:jersey-client:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-client/2.7/jersey-client-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.core:jersey-common:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-common/2.7/jersey-common-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.core:jersey-server:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-server/2.7/jersey-server-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.ext:jersey-entity-filtering:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/ext/jersey-entity-filtering/2.7/jersey-entity-filtering-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.jersey.media:jersey-media-moxy:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/jersey/media/jersey-media-moxy/2.7/jersey-media-moxy-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.javassist:javassist:3.18.1-ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module ModelProvider -->
+  
+  <dirname property="module.modelprovider.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.modelprovider" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.modelprovider" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.modelprovider" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.modelprovider" value="-encoding UTF-8 -source 5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="modelprovider.output.dir" value="${module.modelprovider.basedir}/target/classes"/>
+  <property name="modelprovider.testoutput.dir" value="${module.modelprovider.basedir}/target/test-classes"/>
+  
+  <path id="modelprovider.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="modelprovider.module.production.classpath">
+    <path refid="${module.jdk.classpath.modelprovider}"/>
+    <pathelement location="${basedir}/../X3DToJsonConverter/out/artifacts/X3DToJsonConverter_jar/X3DToJsonConverter.jar"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-server:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.8.11.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.8.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.8.10.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-servlet:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-security:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-server:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-common:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-client:2.7.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-api:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-utils:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:aopalliance-repackaged:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:javax.inject:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-locator:2.2.0.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-jetty-http:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-continuation:9.1.1.v20140108.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.media:jersey-media-moxy:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.ext:jersey-entity-filtering:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.core:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.asm:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.0.classpath"/>
+  </path>
+  
+  <path id="modelprovider.runtime.production.module.classpath">
+    <pathelement location="${modelprovider.output.dir}"/>
+    <pathelement location="${basedir}/../X3DToJsonConverter/out/artifacts/X3DToJsonConverter_jar/X3DToJsonConverter.jar"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-server:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.8.11.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.8.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.8.10.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-servlet:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-security:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-server:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-common:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-client:2.7.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-api:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-utils:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:aopalliance-repackaged:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:javax.inject:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-locator:2.2.0.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-jetty-http:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-continuation:9.1.1.v20140108.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.media:jersey-media-moxy:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.ext:jersey-entity-filtering:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.core:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.asm:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.0.classpath"/>
+  </path>
+  
+  <path id="modelprovider.module.classpath">
+    <path refid="${module.jdk.classpath.modelprovider}"/>
+    <pathelement location="${modelprovider.output.dir}"/>
+    <pathelement location="${basedir}/../X3DToJsonConverter/out/artifacts/X3DToJsonConverter_jar/X3DToJsonConverter.jar"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-server:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.8.11.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.8.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.8.10.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-servlet:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-security:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-server:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-common:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-client:2.7.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-api:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-utils:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:aopalliance-repackaged:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:javax.inject:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-locator:2.2.0.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-jetty-http:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-continuation:9.1.1.v20140108.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.media:jersey-media-moxy:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.ext:jersey-entity-filtering:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.core:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.asm:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.0.classpath"/>
+  </path>
+  
+  <path id="modelprovider.runtime.module.classpath">
+    <pathelement location="${modelprovider.testoutput.dir}"/>
+    <pathelement location="${modelprovider.output.dir}"/>
+    <pathelement location="${basedir}/../X3DToJsonConverter/out/artifacts/X3DToJsonConverter_jar/X3DToJsonConverter.jar"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-server:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.8.11.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.8.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.8.10.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-servlet:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-security:9.3.25.v20180904.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-server:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-common:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.bundles.repackaged:jersey-guava:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:osgi-resource-locator:1.0.1.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.core:jersey-client:2.7.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:javax.ws.rs-api:2.0.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.2.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-api:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-utils:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:aopalliance-repackaged:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2.external:javax.inject:2.2.0.classpath"/>
+    <path refid="library.maven:_org.glassfish.hk2:hk2-locator:2.2.0.classpath"/>
+    <path refid="library.maven:_org.javassist:javassist:3.18.1-ga.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-servlet-core:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.containers:jersey-container-jetty-http:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.jetty:jetty-continuation:9.1.1.v20140108.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.media:jersey-media-moxy:2.7.classpath"/>
+    <path refid="library.maven:_org.glassfish.jersey.ext:jersey-entity-filtering:2.7.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.core:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.asm:2.5.0.classpath"/>
+    <path refid="library.maven:_org.eclipse.persistence:org.eclipse.persistence.antlr:2.5.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.modelprovider">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.modelprovider">
+    <patternset refid="excluded.from.module.modelprovider"/>
+  </patternset>
+  
+  <path id="modelprovider.module.sourcepath">
+    <dirset dir="${module.modelprovider.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.modelprovider" depends="compile.module.modelprovider.production,compile.module.modelprovider.tests" description="Compile module ModelProvider"/>
+  
+  <target name="compile.module.modelprovider.production" depends="register.custom.compilers" description="Compile module ModelProvider; production classes">
+    <mkdir dir="${modelprovider.output.dir}"/>
+    <javac2 destdir="${modelprovider.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.modelprovider}/javac">
+      <compilerarg line="${compiler.args.modelprovider}"/>
+      <bootclasspath refid="modelprovider.module.bootclasspath"/>
+      <classpath refid="modelprovider.module.production.classpath"/>
+      <src refid="modelprovider.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.modelprovider"/>
+    </javac2>
+    
+    <copy todir="${modelprovider.output.dir}">
+      <fileset dir="${module.modelprovider.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.modelprovider.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.modelprovider.tests" depends="register.custom.compilers,compile.module.modelprovider.production" description="compile module ModelProvider; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.modelprovider" description="cleanup module">
+    <delete dir="${modelprovider.output.dir}"/>
+    <delete dir="${modelprovider.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.modelprovider, clean.artifact.modelprovider:jar" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.modelprovider" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.modelprovider:jar" value="${basedir}/out/artifacts/ModelProvider_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.ModelProvider.jar" value="${artifacts.temp.dir}/ModelProvider.jar"/>
+  </target>
+  
+  <target name="clean.artifact.modelprovider:jar" description="clean ModelProvider:jar artifact output">
+    <delete dir="${artifact.output.modelprovider:jar}"/>
+  </target>
+  
+  <target name="artifact.modelprovider:jar" depends="init.artifacts, compile.module.modelprovider" description="Build &#39;ModelProvider:jar&#39; artifact">
+    <mkdir dir="${artifact.output.modelprovider:jar}"/>
+    <jar destfile="${temp.jar.path.ModelProvider.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset file="${basedir}/out/artifacts/ModelProvider_jar/META-INF/MANIFEST.MF" prefix="META-INF"/>
+      <zipfileset dir="${modelprovider.output.dir}"/>
+    </jar>
+    <copy file="${temp.jar.path.ModelProvider.jar}" tofile="${artifact.output.modelprovider:jar}/ModelProvider.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-util/9.3.25.v20180904/jetty-util-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-util-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar" tofile="${artifact.output.modelprovider:jar}/osgi-resource-locator-1.0.1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-io/9.3.25.v20180904/jetty-io-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-io-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.0/org.eclipse.persistence.antlr-2.5.0.jar" tofile="${artifact.output.modelprovider:jar}/org.eclipse.persistence.antlr-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.8.0/jackson-annotations-2.8.0.jar" tofile="${artifact.output.modelprovider:jar}/jackson-annotations-2.8.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-servlet/9.3.25.v20180904/jetty-servlet-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-servlet-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/external/aopalliance-repackaged/2.2.0/aopalliance-repackaged-2.2.0.jar" tofile="${artifact.output.modelprovider:jar}/aopalliance-repackaged-2.2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/hk2-api/2.2.0/hk2-api-2.2.0.jar" tofile="${artifact.output.modelprovider:jar}/hk2-api-2.2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.7/jersey-guava-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-guava-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar" tofile="${artifact.output.modelprovider:jar}/javassist-3.18.1-GA.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/ext/jersey-entity-filtering/2.7/jersey-entity-filtering-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-entity-filtering-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.moxy/2.5.0/org.eclipse.persistence.moxy-2.5.0.jar" tofile="${artifact.output.modelprovider:jar}/org.eclipse.persistence.moxy-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-client/2.7/jersey-client-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-client-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/containers/jersey-container-jetty-http/2.7/jersey-container-jetty-http-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-container-jetty-http-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-server/9.3.25.v20180904/jetty-server-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-server-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/hk2-utils/2.2.0/hk2-utils-2.2.0.jar" tofile="${artifact.output.modelprovider:jar}/hk2-utils-2.2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/ws/rs/javax.ws.rs-api/2.0/javax.ws.rs-api-2.0.jar" tofile="${artifact.output.modelprovider:jar}/javax.ws.rs-api-2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-common/2.7/jersey-common-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-common-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/containers/jersey-container-servlet-core/2.7/jersey-container-servlet-core-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-container-servlet-core-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.0/org.eclipse.persistence.asm-2.5.0.jar" tofile="${artifact.output.modelprovider:jar}/org.eclipse.persistence.asm-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-continuation/9.1.1.v20140108/jetty-continuation-9.1.1.v20140108.jar" tofile="${artifact.output.modelprovider:jar}/jetty-continuation-9.1.1.v20140108.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/hk2-locator/2.2.0/hk2-locator-2.2.0.jar" tofile="${artifact.output.modelprovider:jar}/hk2-locator-2.2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-security/9.3.25.v20180904/jetty-security-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-security-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/persistence/org.eclipse.persistence.core/2.5.0/org.eclipse.persistence.core-2.5.0.jar" tofile="${artifact.output.modelprovider:jar}/org.eclipse.persistence.core-2.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar" tofile="${artifact.output.modelprovider:jar}/validation-api-1.1.0.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/eclipse/jetty/jetty-http/9.3.25.v20180904/jetty-http-9.3.25.v20180904.jar" tofile="${artifact.output.modelprovider:jar}/jetty-http-9.3.25.v20180904.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar" tofile="${artifact.output.modelprovider:jar}/jackson-core-2.8.10.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/hk2/external/javax.inject/2.2.0/javax.inject-2.2.0.jar" tofile="${artifact.output.modelprovider:jar}/javax.inject-2.2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/media/jersey-media-moxy/2.7/jersey-media-moxy-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-media-moxy-2.7.jar"/>
+    <copy file="${path.variable.maven_repository}/org/glassfish/jersey/core/jersey-server/2.7/jersey-server-2.7.jar" tofile="${artifact.output.modelprovider:jar}/jersey-server-2.7.jar"/>
+    <copy file="${basedir}/../X3DToJsonConverter/out/artifacts/X3DToJsonConverter_jar/X3DToJsonConverter.jar" tofile="${artifact.output.modelprovider:jar}/X3DToJsonConverter.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.8.11.1/jackson-databind-2.8.11.1.jar" tofile="${artifact.output.modelprovider:jar}/jackson-databind-2.8.11.1.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" tofile="${artifact.output.modelprovider:jar}/javax.servlet-api-3.1.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar" tofile="${artifact.output.modelprovider:jar}/javax.annotation-api-1.2.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.modelprovider:jar" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
