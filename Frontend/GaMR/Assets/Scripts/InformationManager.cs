@@ -18,9 +18,9 @@ public class InformationManager : Singleton<InformationManager>
 {
 
     [SerializeField]
-    private string backendServer = "192.168.178.43";
+    private string backendServer = "cloud16.dbis.rwth-aachen.de";
     [SerializeField]
-    private string gamificationServer = "192.168.178.75";
+    private string gamificationServer = "cloud16.dbis.rwth-aachen.de";
     [SerializeField]
     private string sharingServer = "192.168.178.48";
     private bool sharingEnabled = true;
@@ -171,8 +171,8 @@ public class InformationManager : Singleton<InformationManager>
 
     private void LoadValues()
     {
-        BackendServer = PlayerPrefs.GetString("backendServer", "192.168.178.82");
-        GamificationServer = PlayerPrefs.GetString("gamificationServer", "192.168.178.82");
+        BackendServer = PlayerPrefs.GetString("backendServer", "cloud16.dbis.rwth-aachen.de");
+        GamificationServer = PlayerPrefs.GetString("gamificationServer", "cloud16.dbis.rwth-aachen.de");
         SharingServer = PlayerPrefs.GetString("sharingServer", "192.168.178.82");
         this.Language = (Language)PlayerPrefs.GetInt("language", 0);
         SharingEnabled = (1 == PlayerPrefs.GetInt("sharingEnabled", 1));

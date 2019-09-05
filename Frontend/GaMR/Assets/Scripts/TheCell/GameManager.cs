@@ -69,6 +69,6 @@ public class GameManager : MonoBehaviour {
     private void GameDone() {
         Debug.Log("Congratulations, you won the game!");
         GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
-        PlayerPrefs.SetInt("THE_CELL_BADGE", 1);
+        PlayerPrefs.SetInt("THE_CELL_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 1);
     }
 }

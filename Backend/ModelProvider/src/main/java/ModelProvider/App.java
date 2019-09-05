@@ -33,7 +33,7 @@ public class App {
         System.out.println("------- GaMR Model Provider Version " + major + "." + minor + "." + patch + " -------");
 
         try {
-            path = Resources.ReadFile("config.conf");
+            path = Resources.ReadFile("config.conf").trim();
             System.out.println("Base path: " + path);
             modelPath = path + File.separatorChar + "3DModels";
             System.out.println("3D Models at " + modelPath);

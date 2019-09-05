@@ -10,7 +10,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
 {
 
     [SerializeField]
-    private string clientId = "c4ced10f-ce0f-4155-b6f7-a4c40ffa410c";
+    private string clientId = "c5389d2a-0074-4c45-9e9e-2eb1571e99bd";
     private string clientSecret;
     [SerializeField]
     private string debugToken;
@@ -43,6 +43,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
         {
             TextAsset secretAsset = (TextAsset)Resources.Load("values/client_secret");
             clientSecret = secretAsset.text;
+            Debug.Log("Read in client secret: " + clientSecret);
         }
     }
 
@@ -50,6 +51,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
     {
         if (req.responseCode == 200)
         {
+            Debug.Log("Received user info for debug token successfully.");
             string json = req.downloadHandler.text;
             Debug.Log(json);
             UserInfo info = JsonUtility.FromJson<UserInfo>(json);
@@ -68,7 +70,9 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
             SceneManager.LoadScene("Scene", LoadSceneMode.Single);
             return;
         }
-        Application.OpenURL(learningLayersAuthorizationEndpoint + "?response_type=code&scope=" + scopes + "&client_id=" + clientId + "&redirect_uri=" + gamrRedirectURI);
+        string url = learningLayersAuthorizationEndpoint + "?response_type=code&scope=" + scopes + "&client_id=" + clientId + "&redirect_uri=" + gamrRedirectURI;
+        Debug.Log("Open login screen with url: " + url);
+        Application.OpenURL(url);
     }
 
     public void Logout()
@@ -94,6 +98,12 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
                     RestManager.Instance.POST(learningLayersTokenEndpoint + "?code=" + authorizationCode + "&client_id=" + clientId +
                         "&client_secret=" + clientSecret + "&redirect_uri=" + gamrRedirectURI + "&grant_type=authorization_code", (req) =>
                         {
+                            Debug.Log("Requested URL: " + req.url);
+                            if (req.responseCode != 200) {
+                                Debug.Log("An error occured: " + req.error + " (Code: " + req.responseCode + ")");
+                                return;
+                            }
+                                
                             string json = req.downloadHandler.text;
                             Debug.Log("Token json: " + json);
                             AuthorizationFlowAnswer answer = JsonUtility.FromJson<AuthorizationFlowAnswer>(json);
@@ -158,16 +168,20 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
 
     private void LoginValidated(UnityWebRequest req)
     {
+        Debug.Log("Requested Gamification-Framework: " + req.url + "(code: " + req.responseCode + ")");
+
         if (req.responseCode == 200)
         {
             SceneManager.LoadScene("Scene", LoadSceneMode.Single);
         }
         else if (req.responseCode == 401)
         {
+            Debug.Log("Error Message: " + req.error);
             MessageBox.Show(LocalizationManager.Instance.ResolveString("The login could not be validated"), MessageBoxType.ERROR);
         }
         else
         {
+            Debug.Log("Error Message: " + req.error);
             MessageBox.Show(LocalizationManager.Instance.ResolveString("An error concerning the user data occured. The login failed.\nCode: ") + req.responseCode + "\n" + req.downloadHandler.text, MessageBoxType.ERROR);
         }
     }

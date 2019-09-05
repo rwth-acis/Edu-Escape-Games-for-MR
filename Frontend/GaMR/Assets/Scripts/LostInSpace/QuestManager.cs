@@ -152,7 +152,7 @@ public class QuestManager {
         Debug.Log("Congratulations, you won the game!");
         GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
         CreateQuest("ENGINE_START", "Engine start", "The player has to calculate the voltage needed to charge the capacitor to the right charge amount.");
-        PlayerPrefs.SetInt("LOST_IN_SPACE_BADGE", 1);
+        PlayerPrefs.SetInt("LOST_IN_SPACE_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 1);
     }
 
     /**

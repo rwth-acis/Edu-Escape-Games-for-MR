@@ -160,6 +160,7 @@ public class RestManager : Singleton<RestManager>
     {
         WaitCursor.Show();
         UnityWebRequest req = new UnityWebRequest(url, requestType);
+        req.chunkedTransfer = false;
         if (body != "")
         {
             req.uploadHandler = new UploadHandlerRaw(Encoding.ASCII.GetBytes(body));
