@@ -248,18 +248,32 @@ public class QuizManager : AnnotationManager
 
     private void InitializeBadgeCreation()
     {
-        Transform badgeHook = gameObject.transform.parent.parent.Find("FacePlayer");
-        Quaternion currentRotation = badgeHook.localRotation;
-        badgeHook.localRotation = Quaternion.identity;
+        try {
+            Transform badgeHook = gameObject.transform.parent.parent.Find("FacePlayer");
+            
+            if (badgeHook == null) {
+                Debug.Log("Could not load badgeHook from parent");
+            }
 
-        GameObject badgeObject = (GameObject)Instantiate(Resources.Load("Badge"));
-        badgeObject.transform.parent = badgeHook;
-        badgeObject.transform.position = gameObject.transform.position + new Vector3(-objInfo.Size.x, -objInfo.Size.y / 2f, 0);
-        badgeHook.localRotation = currentRotation;
+            Quaternion currentRotation = badgeHook.localRotation;
+            badgeHook.localRotation = Quaternion.identity;
 
-        badgeManager = badgeObject.GetComponent<BadgeManager>();
+            GameObject badgeObject = (GameObject)Instantiate(Resources.Load("Badge"));
 
-        gamificationManager.BadgeManager = badgeManager;
+            if (badgeObject == null) {
+                Debug.Log("Could not load badgeObject from resources");
+            }
+
+            badgeObject.transform.parent = badgeHook;
+            badgeObject.transform.position = gameObject.transform.position + new Vector3(-objInfo.Size.x, -objInfo.Size.y / 2f, 0);
+            badgeHook.localRotation = currentRotation;
+
+            badgeManager = badgeObject.GetComponent<BadgeManager>();
+
+            gamificationManager.BadgeManager = badgeManager;
+        } catch (Exception e) {
+            Debug.Log("Failed initializing Badge creation");
+        }
     }
 
     /// <summary>

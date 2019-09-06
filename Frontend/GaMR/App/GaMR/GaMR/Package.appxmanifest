@@ -29,7 +29,7 @@
       <Extensions>
         <uap:Extension Category="windows.protocol">
           <uap:Protocol Name="gamr">
-            <uap:DisplayName>GAMR_SCHEME</uap:DisplayName>
+            <uap:DisplayName>GaMR_scheme</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
       </Extensions>
