@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: GaMR
+  productName: MREscapeGames
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -39,7 +39,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: bc4b0677266c50c40853b8430345300e,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: ce394df9469c2c04f98f31a1a8fb9911,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -582,7 +582,7 @@ PlayerSettings:
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 80787f1fb94fd601
-  metroApplicationDescription: GaMR
+  metroApplicationDescription: Educational Mixed Reality Escape Games
   wsaImages:
     2031664: Assets/Textures/Logo/Logo_48px.png
     2031716: Assets/Textures/Logo/Logo_44px.png
@@ -611,7 +611,7 @@ PlayerSettings:
     2293910: Assets/Textures/Logo/Logo_465x225px.png
     2293960: Assets/Textures/Logo/Logo_620x300px.png
     2294160: Assets/Textures/Logo/Logo_1240x600px.png
-  metroTileShortName: GaMR
+  metroTileShortName: EscapGames
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
