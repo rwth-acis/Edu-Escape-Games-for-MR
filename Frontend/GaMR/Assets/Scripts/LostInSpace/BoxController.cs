@@ -36,6 +36,8 @@ public class BoxController : MonoBehaviour, IInputClickHandler {
         closeCenter = mCollider.center;
         openScale = new Vector3(closeScale.x, closeScale.y * 0.5f, closeScale.z);   // Calculate the size and center for opened box
         openCenter = new Vector3(closeCenter.x, closeCenter.y - 0.25f * closeScale.y, closeCenter.z);
+
+        Debug.Log("Box Object started");
     }
 
     /**

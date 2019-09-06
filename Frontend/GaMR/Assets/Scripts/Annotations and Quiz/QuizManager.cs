@@ -74,7 +74,7 @@ public class QuizManager : AnnotationManager
     {
         Init();
         objInfo = GetComponent<ObjectInfo>();
-        gamificationManager = transform.parent.parent.GetComponent<GamificationManager>();
+        gamificationManager = GetComponent<GamificationManager>();
         subPathLoad += objectInfo.ModelName + "/";
         subPathSave += objectInfo.ModelName + "/";
 

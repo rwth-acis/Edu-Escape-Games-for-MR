@@ -34,9 +34,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
         {
             if (accessToken == null || accessToken == "")
             {
-                accessToken = debugToken;
-                AddAccessTokenToHeader();
-                RestManager.Instance.GET(learningLayersUserInfoEndpoint + "?access_token=" + accessToken, GetUserInfoForDebugToken);
+                playOffline();
             }
         }
         else // else: fetch the client secret
@@ -45,6 +43,12 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
             clientSecret = secretAsset.text;
             Debug.Log("Read in client secret: " + clientSecret);
         }
+    }
+
+    public void playOffline() {
+        accessToken = debugToken;
+        AddAccessTokenToHeader();
+        RestManager.Instance.GET(learningLayersUserInfoEndpoint + "?access_token=" + accessToken, GetUserInfoForDebugToken);
     }
 
     private void GetUserInfoForDebugToken(UnityWebRequest req)

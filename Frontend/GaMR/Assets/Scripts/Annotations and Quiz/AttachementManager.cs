@@ -62,7 +62,11 @@ public class AttachementManager : MonoBehaviour
         if (manager != null)
         {
             UnRegisterOnNotifiers();
-            manager.HideAllAnnotations();
+            try {
+                manager.HideAllAnnotations();
+            } catch (Exception e) {
+                Debug.Log("Could not hide all Annotations: " + e.Message);
+            }
             Destroy(manager);
         }
 
@@ -72,6 +76,7 @@ public class AttachementManager : MonoBehaviour
             quizManager.QuizName = quizName;
             manager = quizManager;
             IsQuiz = true;
+            Debug.Log("Create new QuizManager");
         }
         else
         {

@@ -46,6 +46,14 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
         }
         generateSpaceItems();
         DisableChildren();
+
+        foreach (GameObject plane in horizontalSurfaces) {
+            Destroy(plane);
+        }
+
+        foreach (GameObject plane in verticalSurfaces) {
+            Destroy(plane);
+        }
     }
 
     public void DisableChildren() {

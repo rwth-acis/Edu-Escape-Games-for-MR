@@ -8,7 +8,6 @@ Builds/
 UnityGenerated/
 Library/
 Assets/AssetStoreTools*
-App/
 UWP/
 /WindowsStoreApp
 project.json

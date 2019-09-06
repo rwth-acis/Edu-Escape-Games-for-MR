@@ -32,6 +32,8 @@ public class FuseboxTrigger : MonoBehaviour {
         oldFuse = null;
 
         brokenTexture = currentFuse.GetComponent<Renderer>().materials;
+
+        Debug.Log("Fuxebox started");
 	}
 	
 	/**
