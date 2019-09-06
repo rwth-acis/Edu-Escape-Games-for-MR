@@ -1354,19 +1354,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4086694633030028, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.00046169697
+      value: -0.00046234133
       objectReference: {fileID: 0}
     - target: {fileID: 4308037745263162, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.3581995
+      value: -0.3581998
       objectReference: {fileID: 0}
     - target: {fileID: 4196587989135580, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.0007867676
+      value: -0.0007880563
       objectReference: {fileID: 0}
     - target: {fileID: 4414823140297466, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.00022811092
+      value: -0.0002285942
       objectReference: {fileID: 0}
     - target: {fileID: 4645486226854028, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalScale.x
@@ -1540,6 +1540,24 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 11.73825
+      objectReference: {fileID: 0}
+    - target: {fileID: 212284809598922984, guid: e5c4719499dd85e4d8df3ba0f0282bfe,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc76236c12668d244a527bfa37ccc82b,
+        type: 3}
+    - target: {fileID: 4291172922680444, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.07278873
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291172922680444, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.07278874
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291172922680444, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.6617158
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114282035375621532, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}

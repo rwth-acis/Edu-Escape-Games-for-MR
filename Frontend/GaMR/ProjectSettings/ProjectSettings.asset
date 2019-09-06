@@ -575,7 +575,7 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: GaMR
+  metroPackageName: MREscapeGames
   metroPackageVersion: 1.5.2.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
