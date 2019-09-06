@@ -5,6 +5,7 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using UnityPlayer;
+using UnityEngine;
 
 namespace GaMR
 {
