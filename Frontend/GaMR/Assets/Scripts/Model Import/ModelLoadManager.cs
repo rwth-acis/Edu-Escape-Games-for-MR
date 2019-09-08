@@ -21,6 +21,7 @@ public class ModelLoadManager
     private X3DObj x3dObject;
     private BoundingBoxId boundingBoxId;
     private bool remotelySpawned;
+    private GameObject localPrefab;
 
     private Action callback;
 
@@ -33,6 +34,17 @@ public class ModelLoadManager
         this.globalSpawnParent = globalSpawnParent;
         this.remotelySpawned = remotelySpawned;
         this.boundingBoxId = boundingBoxId;
+    }
+
+    public ModelLoadManager(Vector3 spawnPosition, Transform globalSpawnParent, BoundingBoxId boundingBoxId, bool remotelySpawned, GameObject prefab) {
+        shader = ModelLoadSettings.Instance.shader;
+        boundingBoxPrefab = ModelLoadSettings.Instance.boundingBox;
+        spawnEulerAngles = new Vector3(0, 180, 0);
+        this.spawnPosition = spawnPosition;
+        this.globalSpawnParent = globalSpawnParent;
+        this.remotelySpawned = remotelySpawned;
+        this.boundingBoxId = boundingBoxId;
+        this.localPrefab = prefab;
     }
 
     /// <summary>
@@ -50,6 +62,32 @@ public class ModelLoadManager
     {
         this.callback = callback;
         Load(name);
+    }
+
+    public ModelLoadManager LoadLocal() {
+        if (localPrefab != null) {
+            // Load object specific content
+            GameObject localModel = GameObject.Instantiate(localPrefab);
+            localModel.name = "X3D Parent";
+            Collider collider = localModel.transform.GetChild(0).GetComponent<Collider>();
+            ObjectInfo info = localModel.GetComponent<ObjectInfo>();
+
+            info.Bounds = collider.bounds;
+
+            AttachementManager attachmentManager = localModel.AddComponent<AttachementManager>();
+            attachmentManager.Init();
+
+            CreateBoundingBox(localModel, info.Bounds);
+
+            CreateGamificationGame(info.ModelName.ToLower());
+
+            if (callback != null) {
+                callback();
+            }
+        } else {
+            Debug.Log("Tried to load local null model");
+        }
+        return this;
     }
 
     /// <summary>

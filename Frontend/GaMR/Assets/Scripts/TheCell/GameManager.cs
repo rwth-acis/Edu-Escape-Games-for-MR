@@ -24,19 +24,19 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        membrane.GetComponent<AttachementManager>().Init();
+        //membrane.GetComponent<AttachementManager>().Init();
         //membrane.GetComponent<AttachementManager>().SetQuizManager("MEM_QUIZ");
 
-        mitochondria.GetComponent<AttachementManager>().Init();
+        //mitochondria.GetComponent<AttachementManager>().Init();
         //mitochondria.GetComponent<AttachementManager>().SetQuizManager("MIT_QUIZ");
 
-        er.GetComponent<AttachementManager>().Init();
+        //er.GetComponent<AttachementManager>().Init();
         //er.GetComponent<AttachementManager>().SetQuizManager("ER_QUIZ");
 
-        nucleus.GetComponent<AttachementManager>().Init();
-        nucleus.GetComponent<AttachementManager>().SetQuizManager("NUC_QUIZ");
+        //nucleus.GetComponent<AttachementManager>().Init();
+        //nucleus.GetComponent<AttachementManager>().SetQuizManager("NUC_QUIZ");
 
-        other.GetComponent<AttachementManager>().Init();
+        //other.GetComponent<AttachementManager>().Init();
         //other.GetComponent<AttachementManager>().SetQuizManager("OTHER_QUIZ");
     }
 	

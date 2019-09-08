@@ -1260,8 +1260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e742aed9073fa604ba3c5ed2543a4a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backendServer: cloud16.dbis.rwth-aachen.de
-  gamificationServer: cloud16.dbis.rwth-aachen.de
+  backendServer: 137.226.58.16
+  gamificationServer: 137.226.58.16
   sharingServer: 19.2168.178.48
   portBackend: 8080
   portGamification: 8086
@@ -1354,19 +1354,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4086694633030028, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.00046234133
+      value: -0.0004633079
       objectReference: {fileID: 0}
     - target: {fileID: 4308037745263162, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.3581998
+      value: -0.35820013
       objectReference: {fileID: 0}
     - target: {fileID: 4196587989135580, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.0007880563
+      value: -0.0007899894
       objectReference: {fileID: 0}
     - target: {fileID: 4414823140297466, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.0002285942
+      value: -0.00022891638
       objectReference: {fileID: 0}
     - target: {fileID: 4645486226854028, guid: e5c4719499dd85e4d8df3ba0f0282bfe, type: 2}
       propertyPath: m_LocalScale.x

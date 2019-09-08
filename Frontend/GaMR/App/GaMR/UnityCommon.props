@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <UnityWSASolutionName>GaMR</UnityWSASolutionName>
+        <UnityWSASolutionName>MREscapeGames</UnityWSASolutionName>
         <UnityWSASolutionDir>C:\Users\Daniel\Documents\Uni\EscapeRoomProject\Frontend\GaMR\App\GaMR\</UnityWSASolutionDir>
         <UnityProjectDir>C:\Users\Daniel\Documents\Uni\EscapeRoomProject\Frontend\GaMR\</UnityProjectDir>
         <UnityWSAPlayerDir>C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>

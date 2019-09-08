@@ -71,10 +71,10 @@ public class QuizManager : AnnotationManager
     /// initializes the quiz and loads the quiz elements
     /// </summary>
     public new void Start()
-    {
+    {   
         Init();
         objInfo = GetComponent<ObjectInfo>();
-        gamificationManager = GetComponent<GamificationManager>();
+        gamificationManager = transform.parent.parent.GetComponent<GamificationManager>();
         subPathLoad += objectInfo.ModelName + "/";
         subPathSave += objectInfo.ModelName + "/";
 
