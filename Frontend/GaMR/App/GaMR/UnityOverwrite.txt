@@ -6,7 +6,7 @@
 # Write a line equal to 'keep-all' (without quotes) to keep files regardless their modification (preserved accross builds)
 # Default behavior is to never overwrite files
 App.cs: 1267A42B7090A399F2C6D86A7F1BDC78
-MREscapeGames.sln: F051B84E4F10DF478A493A4712EB4575
+MREscapeGames.sln: 7822DFE008F731CE9BAA952B4921B92E
 Package.appxmanifest: ED5F0FDAE3DFA7E5CA4E0F510D7C426B
 project.json: 1D02BC64BAC0D041019673A1C4C51737
 Assets\SplashScreen.scale-200.png: A85C1D7624B6902CF8CEBD6F0200A826
@@ -83,7 +83,7 @@ GaMR\Assets\Wide310x150Logo.scale-400.png: modified
 GaMR\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 1D02BC64BAC0D041019673A1C4C51737
 MREscapeGames\App.cs: A8776642ED53A13C1A1570BFC9D1639F
-MREscapeGames\MREscapeGames.csproj: C94AE1260C4004923408487DA8C8A888
+MREscapeGames\MREscapeGames.csproj: 09E1335641CDFB992453F99C4BB0A01B
 MREscapeGames\MREscapeGames.csproj.user: BEFB8AC4886C4CFDD3C68445D6F19B04
 MREscapeGames\Package.appxmanifest: BA6DFCD2AF543FCC71FCE89A07FD998A
 MREscapeGames\project.json: 1D02BC64BAC0D041019673A1C4C51737

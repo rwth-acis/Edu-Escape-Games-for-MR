@@ -52,10 +52,10 @@ public class TrophyController : MonoBehaviour, IFocusable, IInputClickHandler {
             theCellBadge.SetActive(false);
             trophyRoomOpened = false;
         } else {
-            if (PlayerPrefs.GetInt("LOST_IN_SPACE_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 0) == 1) {
+            if (InformationManager.Instance.UserInfo == null || PlayerPrefs.GetInt("LOST_IN_SPACE_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 0) == 1) {
                 lostInSpaceBadge.SetActive(true);
             }
-            if (PlayerPrefs.GetInt("THE_CELL_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 0) == 1) {
+            if (InformationManager.Instance.UserInfo == null || PlayerPrefs.GetInt("THE_CELL_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 0) == 1) {
                 theCellBadge.SetActive(true);
             }
             trophyRoomOpened = true;

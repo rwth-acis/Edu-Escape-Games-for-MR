@@ -544,6 +544,7 @@ MonoBehaviour:
   - {fileID: 272119687}
   - {fileID: 1264248528}
   - {fileID: 564196088}
+  - {fileID: 670922975}
   trophy: {fileID: 564196088}
 --- !u!1 &438567428
 GameObject:
@@ -1252,24 +1253,17 @@ GameObject:
   m_PrefabParentObject: {fileID: 1625352690545550, guid: 315a6f3e911de8242b927d029b104d4a,
     type: 2}
   m_PrefabInternal: {fileID: 670922969}
---- !u!114 &670922975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670922970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a458358f5fd3547b9a44720050fe3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressDepth: 0.008
+--- !u!1 &670922975 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1179905082796526, guid: 315a6f3e911de8242b927d029b104d4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 670922969}
 --- !u!114 &670922976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670922971}
+  m_GameObject: {fileID: 670922970}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85a458358f5fd3547b9a44720050fe3c, type: 3}
@@ -1286,7 +1280,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670922972}
+  m_GameObject: {fileID: 670922971}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85a458358f5fd3547b9a44720050fe3c, type: 3}
@@ -1298,7 +1292,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 670922973}
+  m_GameObject: {fileID: 670922972}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85a458358f5fd3547b9a44720050fe3c, type: 3}
@@ -1306,6 +1300,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressDepth: 0.008
 --- !u!114 &670922980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670922973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a458358f5fd3547b9a44720050fe3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressDepth: 0.008
+--- !u!114 &670922981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
