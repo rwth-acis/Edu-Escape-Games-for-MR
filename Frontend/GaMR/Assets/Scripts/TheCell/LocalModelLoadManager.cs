@@ -14,11 +14,8 @@ public class LocalModelLoadManager : MonoBehaviour {
     public Transform globalSpawnPosition;
 
 	void Start () {
-        Debug.Log("Start initiating Models");
+        
 
-        // Nucleus
-        BoundingBoxId nucBoundID = new BoundingBoxId();
-        ModelLoadManager nucModelLoad = new ModelLoadManager(new Vector3(2, 2, 2), globalSpawnPosition, nucBoundID, false, NucleusPrefab).LoadLocal();
     }
 	
 	// Update is called once per frame

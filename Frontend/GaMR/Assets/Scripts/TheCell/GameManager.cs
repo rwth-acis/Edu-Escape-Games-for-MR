@@ -5,43 +5,37 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject membrane;
-    public GameObject mitochondria;
-    public GameObject er;
-    public GameObject nucleus;
-    public GameObject other;
-
     public bool isEditMode;
+    public GameObject AnnotationManagement;
 
     private CellMode currentMode;
-    private enum CellMode {
-        Nucleus, Membrane, Other
+    public enum CellMode {
+        Nucleus, ER, Mitochondrium, Other, Membrane
     }
 
     private float gameSartTime = 0f;
     public Text display;
     public float timeLimit;
 
-	// Use this for initialization
-	void Start () {
-        //membrane.GetComponent<AttachementManager>().Init();
-        //membrane.GetComponent<AttachementManager>().SetQuizManager("MEM_QUIZ");
+    // Use this for initialization
+    void Start() {
+        AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Nucleus, () => {
+            AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.ER, () => {
+                AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Mitochondrium, () => {
+                    AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Other, () => {
+                        AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Membrane, () => {
+                            GameDone();
+                        });
+                    });
+                });
+            });
+        });
 
-        //mitochondria.GetComponent<AttachementManager>().Init();
-        //mitochondria.GetComponent<AttachementManager>().SetQuizManager("MIT_QUIZ");
 
-        //er.GetComponent<AttachementManager>().Init();
-        //er.GetComponent<AttachementManager>().SetQuizManager("ER_QUIZ");
-
-        //nucleus.GetComponent<AttachementManager>().Init();
-        //nucleus.GetComponent<AttachementManager>().SetQuizManager("NUC_QUIZ");
-
-        //other.GetComponent<AttachementManager>().Init();
-        //other.GetComponent<AttachementManager>().SetQuizManager("OTHER_QUIZ");
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         updateTimeDisplay();
 	}
 
@@ -78,6 +72,8 @@ public class GameManager : MonoBehaviour {
     private void GameDone() {
         Debug.Log("Congratulations, you won the game!");
         GameObject.FindGameObjectWithTag("GameDoneSplash").GetComponent<GameDone>().Gamedone();
-        PlayerPrefs.SetInt("THE_CELL_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 1);
+        if (InformationManager.Instance.UserInfo != null) {
+            PlayerPrefs.SetInt("THE_CELL_BADGE_" + InformationManager.Instance.UserInfo.preferred_username, 1);
+        }
     }
 }

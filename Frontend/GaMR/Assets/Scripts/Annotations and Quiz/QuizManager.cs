@@ -89,6 +89,8 @@ public class QuizManager : AnnotationManager
 
         // load the annotations/quiz questions
         LoadAnnotations();
+
+        Debug.Log("Started QuizManager with name " + QuizName);
     }
 
     /// <summary>

@@ -234,6 +234,13 @@ public class AnnotationManager : MonoBehaviour
             JsonAnnotationArray array = JsonUtility.FromJson<JsonAnnotationArray>(res.downloadHandler.text);
             annotations = array.array;
             ShowAllAnnotations();
+            Debug.Log("Loaded annotations. Show them");
+
+            if (InformationManager.Instance.playerType == PlayerType.STUDENT) {
+                
+            }
+        } else {
+            Debug.Log("Could not load annotations: " + res.error);
         }
     }
 
