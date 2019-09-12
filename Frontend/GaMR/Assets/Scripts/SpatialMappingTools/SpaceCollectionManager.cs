@@ -183,7 +183,24 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
     private int FindNearestPlane(List<GameObject> planes, Vector3 minSize, List<int> usedPlanes, bool isVertical)
     {
         int planeIndex = -1;
-       
+        
+        if (!isVertical) {
+            int lowestPlaneIndex = -1;
+            float lowestPlaneHeight = -100000f;
+
+            for (int i = 0; i < planes.Count; i++) {
+                if (planes[i].transform.position.y < lowestPlaneHeight) {
+                    lowestPlaneIndex = i;
+                    lowestPlaneHeight = planes[i].transform.position.y;
+                }
+            }
+
+            if (lowestPlaneIndex != -1) {
+                Debug.Log("Return lowest plane " + lowestPlaneIndex);
+                return lowestPlaneIndex;
+            }
+        }
+
         for(int i = 0; i < planes.Count; i++)
         {
             if (usedPlanes.Contains(i))

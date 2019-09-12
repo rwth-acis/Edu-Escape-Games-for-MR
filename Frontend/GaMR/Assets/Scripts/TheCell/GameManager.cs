@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        if (AnnotationManagement == null) {
+            Debug.LogWarning("Something went wrong! Annotation managment is null.");
+        }
+
         AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Nucleus, () => {
             AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.ER, () => {
                 AnnotationManagement.GetComponent<AnnotationManagement>().StartQuiz(CellMode.Mitochondrium, () => {
@@ -30,8 +34,6 @@ public class GameManager : MonoBehaviour {
                 });
             });
         });
-
-
     }
 
     // Update is called once per frame
@@ -57,7 +59,9 @@ public class GameManager : MonoBehaviour {
         int minutes = (int) timeLeft / 60;
         int seconds = (int) timeLeft % 60;
 
-        display.text = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        if (display != null) {
+            display.text = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        }
 
         if (timeLeft <= 0) {
             GameOver();

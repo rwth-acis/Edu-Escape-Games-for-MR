@@ -23,7 +23,7 @@ public class AuthorizationManager : Singleton<AuthorizationManager>
 
     const string scopes = "openid%20profile%20email";
 
-    const string gamrRedirectURI = "escape://";
+    const string gamrRedirectURI = "gamr://";
 
     public string AccessToken { get { return accessToken; } }
 
