@@ -48,11 +48,11 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
         DisableChildren();
 
         foreach (GameObject plane in horizontalSurfaces) {
-            Destroy(plane);
+            //Destroy(plane);
         }
 
         foreach (GameObject plane in verticalSurfaces) {
-            Destroy(plane);
+            //Destroy(plane);
         }
     }
 
@@ -139,13 +139,10 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
                 position = surface.transform.position + (plane.PlaneThickness * plane.SurfaceNormal);
 
                 planeTimesUsed[index]++;
-                if (missingPlanes) {
-                    if (planeTimesUsed[index] == 2) {
-                        position = position - Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
-                    }
-                    else if (planeTimesUsed[index] == 3) {
-                        position = position + Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
-                    }
+                if (planeTimesUsed[index] == 2) {
+                    position = position - Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
+                } else if (planeTimesUsed[index] == 3) {
+                    position = position + Vector3.Scale((new Vector3(1, 1, 1) - Vector3.Normalize(plane.SurfaceNormal)), (surface.GetComponent<Collider>().bounds.size / 6));
                 }
 
                 position = AdjustPositionWithSpatialMap(position, plane.SurfaceNormal);
@@ -185,8 +182,9 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
         int planeIndex = -1;
         
         if (!isVertical) {
+            Debug.Log("Search for horizontal plane");
             int lowestPlaneIndex = -1;
-            float lowestPlaneHeight = -100000f;
+            float lowestPlaneHeight = 100000f;
 
             for (int i = 0; i < planes.Count; i++) {
                 if (planes[i].transform.position.y < lowestPlaneHeight) {
@@ -248,6 +246,7 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
         {
             // If the object is occluded, reset its position.
             newPosition = hitInfo.point;
+            Debug.Log("Changed position because it was occluded");
         }
 
         return newPosition;

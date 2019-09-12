@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8afc40dadd03a4459c78dcf7280ddc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtDistance: 1
+  lookAtDistance: 1.8
   speed: 3
   takeAudio: {fileID: 82762639587527006}
   putAudio: {fileID: 82294567775009958}
