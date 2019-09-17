@@ -48,11 +48,11 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
         DisableChildren();
 
         foreach (GameObject plane in horizontalSurfaces) {
-            //Destroy(plane);
+            Destroy(plane);
         }
 
         foreach (GameObject plane in verticalSurfaces) {
-            //Destroy(plane);
+            Destroy(plane);
         }
     }
 
@@ -119,11 +119,11 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
 
             if (surfaceType == PlacementSurfaces.Vertical)
             {
-                index = FindNearestPlane(surfaces, collider.bounds.size, UsedPlanes, true);
+                index = FindNearestPlane(surfaces, collider.bounds.size, UsedPlanes, true, item);
             }
             else
             {
-                index = FindNearestPlane(surfaces, collider.bounds.size, UsedPlanes, false);
+                index = FindNearestPlane(surfaces, collider.bounds.size, UsedPlanes, false, item);
             }
 
             // If we can't find a good plane we will put the object floating in space.
@@ -177,12 +177,12 @@ public class SpaceCollectionManager : Singleton<SpaceCollectionManager>
     /// <param name="startIndex">Index in the planes collection that we want to start at (to help avoid double-placement of objects).</param>
     /// <param name="isVertical">True, if we are currently evaluating vertical surfaces.</param>
     /// <returns></returns>
-    private int FindNearestPlane(List<GameObject> planes, Vector3 minSize, List<int> usedPlanes, bool isVertical)
+    private int FindNearestPlane(List<GameObject> planes, Vector3 minSize, List<int> usedPlanes, bool isVertical, GameObject gameObjectFor)
     {
         int planeIndex = -1;
         
-        if (!isVertical) {
-            Debug.Log("Search for horizontal plane");
+        if (!isVertical && gameObjectFor != null && gameObjectFor.tag == "BoardComputer") {
+            Debug.Log("Search for lowest horizontal plane for Board Computer");
             int lowestPlaneIndex = -1;
             float lowestPlaneHeight = 100000f;
 

@@ -17,6 +17,7 @@ TagManager:
   - LostInSpace
   - Roomloader
   - Activator
+  - BoardComputer
   layers:
   - Default
   - TransparentFX

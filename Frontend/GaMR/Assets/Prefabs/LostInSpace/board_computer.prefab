@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 65910713275266288}
   m_Layer: 0
   m_Name: board_computer
-  m_TagString: Untagged
+  m_TagString: BoardComputer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
